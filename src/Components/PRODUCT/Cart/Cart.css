@@ -1,0 +1,101 @@
+.CartPay {
+  width: 280px;
+}
+
+.Cart {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.Pay {
+  width: 100%;
+  border: 4px solid #ff0000;
+  background-color: #ff0000;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 22px;
+  margin-top: 25px;
+  padding: 9px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.Pay:hover {
+  transition: all 0.3s;
+  background-color: white;
+  color: #ff0000;
+  padding: 9px;
+  border: 4px solid #ff0000;
+}
+
+.section-title {
+  background-color: black;
+  color: white;
+  display: flex;
+  padding: 4px 22px;
+  text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sectionCart {
+  position: sticky;
+  top: 70px;
+  z-index: 5;
+}
+
+.main1 {
+  background-color: white;
+  min-height: 79px;
+  max-height: calc(79px * 3);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-right: 1px solid #adb5bd;
+  z-index: 6;
+}
+
+.main1::-webkit-scrollbar {
+  width: 6px;
+}
+
+.main1::-webkit-scrollbar-thumb {
+  background-color: #bfbfbf;
+  border-radius: 20px;
+}
+
+.main1::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+.main2 {
+  background-color: white;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 40px;
+  font-weight: 600;
+}
+
+.main3 {
+  background-color: white;
+  height: 100px;
+}
+
+.main3-note {
+  border: none;
+  resize: none;
+  font-size: inherit;
+  color: black;
+  padding: 18px 20px;
+  width: 90%;
+  height: 60%;
+}
+.main3-note:focus {
+  outline: none;
+}

@@ -1,0 +1,28 @@
+.PRODUCT {
+  margin-top: 70px;
+  display: flex;
+  justify-content: space-around;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  margin-bottom: 700px;
+}
+
+.left {
+  width: 300px;
+  top: 0rem;
+  bottom: 0rem;
+}
+
+.sideBar {
+  margin-left: 50px;
+  position: sticky;
+  top: 70px;
+  z-index: 5;
+}
+
+.right {
+  /* background-color: aqua; */
+  width: 300px;
+  top: 0rem;
+  bottom: 0rem;
+}
