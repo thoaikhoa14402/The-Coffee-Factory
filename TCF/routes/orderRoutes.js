@@ -6,7 +6,6 @@ const route = express.Router()
 //Order History for Admin
 route.get('/history-ad', OrderController.History_Admin)
 
-
 //Order History for User
 route.post('/history-user', OrderController.History_User)
 
