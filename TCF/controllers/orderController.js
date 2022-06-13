@@ -1,23 +1,26 @@
 const Order = require ('../models/orderModel.js')
 
-exports.Order_Handle = (req, res)=>{
+exports.Order_Handle = async (req, res)=>{
     var dateTime = require('node-datetime').create().format('H:M:S d-m-Y')
-    const dataGet={
-        status: "Unprocessed",
-        idUser: req.body.idUser,
-        userName: req.body.userName,
-        address: req.body.address,
-        phone: req.body.phone,
-        productName: req.body.productName,
-        toppings: req.body.toppings,
-        quantity: req.body.quantity,
-        price: req.body.price,
-        dateOrder: dateTime
+    const reqData=req.body, dataGet=[]
+    for(let i=0; i<reqData.length; i++){
+        dataGet.push({
+            status: "Unprocessed",
+            idUser: reqData[i].idUser,
+            userName: reqData[i].userName,
+            address: reqData[i].address,
+            phone: reqData[i].phone,
+            productName: reqData[i].productName,
+            toppings: reqData[i].toppings,
+            quantity: reqData[i].quantity,
+            price: reqData[i].price,
+            dateOrder: dateTime
+        })
     }
-    res.status(200).send(dataGet)
-    const newOrder=Order(dataGet)
-    newOrder.save().then(doc=>{
-        console.log(doc)
+    console.log(dataGet)
+    const newOrder= await Order.insertMany(dataGet)
+    res.status(200).json({
+        newOrder
     })
 }
 
