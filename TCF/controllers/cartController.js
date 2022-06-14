@@ -1,6 +1,6 @@
 const Cart = require ('../models/cartModel.js')
 
-exports.updateCart = async (req,res)=>{
+exports.Shopping_Cart_Handle = async (req,res)=>{
     const checkUser = await Cart.exists({'idUser': req.body.idUser})
     if(!checkUser){
         const newUser= await Cart.create(req.body)
@@ -17,7 +17,7 @@ exports.updateCart = async (req,res)=>{
     }
 }
 
-exports.getCart = async (req,res)=>{
+exports.Get_Shopping_Cart_Data = async (req,res)=>{
     const allOrders=await Cart.find({}, {'_id': false, '__v':false})
     res.status(200).json({
         status: 'success',
