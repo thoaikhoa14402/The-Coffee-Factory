@@ -1,4 +1,4 @@
-const Cart = require ('../models/cartModel.js')
+const Cart = require ('../models/CartModel.js')
 
 exports.Shopping_Cart_Handle = async (req,res)=>{
     const checkUser = await Cart.exists({'idUser': req.body.idUser})

@@ -1,4 +1,4 @@
-const Order = require ('../models/orderModel.js')
+const Order = require ('../models/OrderModel.js')
 
 exports.Order_Handle = async (req, res)=>{
     var dateTime = require('node-datetime').create().format('H:M:S d-m-Y')
