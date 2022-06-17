@@ -1,0 +1,137 @@
+.containers {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.title-container .title-best-selling {
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 40px;
+    margin: 10px auto;
+    background: linear-gradient(180deg, #fa3802 0%, #ac0606 46.88%, #5F0000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-family: 'Montserrat';
+    margin-bottom: 30px;
+}
+
+
+.best-selling-container {
+    min-width: 60%;
+    height: 425px;
+    display: flex;
+    justify-content: center;
+    /* justify-content: space-evenly; */
+}
+
+.selling-card {
+    width: 240px;
+    height: 380px;
+    background-color: #fff;
+    box-shadow: 5px 5px 18px #888888;
+    margin: 0 20px;
+}
+
+.img-product {
+    width: 240px;
+    height: 240px;
+    background-color: black;
+    overflow: hidden;
+
+}
+
+.img-product img {
+    margin-top: 20px;
+    transition: 0.4s;
+}
+
+.img-product:hover img {
+    transform: scale(1.2);
+}
+
+.selling-card p {
+    width: 200px;
+    height: 20px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    /* line-height: 20px; */
+    align-items: center;
+    color: #000000;
+    border-bottom: 2px solid black;
+    margin: 10px auto 0;
+}
+
+.selling-card .price-vnd {
+    width: 67.41px;
+    height: 19.73px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    align-items: center;
+    color: #FF0000;
+    border-bottom: none;
+}
+
+.add-product1,
+.add-product2,
+.add-product3,
+.add-product4,
+.add-product5 {
+    margin-top: 10%;
+    margin-left: 68%;
+}
+
+.add-product1,
+.add-product2,
+.add-product3,
+.add-product4,
+.add-product5{
+    transform: translate(-10px, -7px);
+    cursor: pointer;
+}
+
+.add-product1:hover .background,
+.add-product2:hover .background,
+.add-product3:hover .background,
+.add-product4:hover .background,
+.add-product5:hover .background {
+    fill: white;
+}
+
+.add-product1:hover .border,
+.add-product2:hover .border,
+.add-product3:hover .border,
+.add-product4:hover .border,
+.add-product5:hover .border {
+    width: 26px;
+    height: 26px;
+    border: 3.5px solid #ff0000;
+    border-radius: 50%;
+}
+
+.add-product1:hover .ver,
+.add-product2:hover .ver,
+.add-product3:hover .ver,
+.add-product4:hover .ver,
+.add-product5:hover .ver {
+    transform: translateX(20.5px) translateY(-5.8px) rotate(45deg);
+    transition: 0.5s;
+    fill: #ff0000;
+}
+
+.add-product1:hover .hor,
+.add-product2:hover .hor,
+.add-product3:hover .hor,
+.add-product4:hover .hor,
+.add-product5:hover .hor {
+    transform: translateX(43px) translateY(14px) rotate(135deg);
+    transition: 0.5s;
+    fill: #ff0000;
+}

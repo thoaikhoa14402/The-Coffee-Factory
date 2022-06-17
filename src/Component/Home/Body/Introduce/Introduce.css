@@ -1,0 +1,102 @@
+.introduce-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    position: relative;
+}
+
+.img-coffee {
+    display: flex;
+    position: absolute;
+    width: 400px;
+    justify-content: space-between;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+}
+
+.img-coffee-tree {
+    display: flex;
+    position: absolute;
+    width: 1120px;
+    justify-content: space-between;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -65px;
+}
+
+.introduces p {
+    font-family: 'Montserrat';
+}
+
+.introduces .title-intro {
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 40px;
+    margin: 10px auto;
+    background: linear-gradient(180deg, #fa3802 0%, #ac0606 46.88%, #5F0000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-family: 'Montserrat';
+    margin-bottom: 30px;
+}
+
+.introduce-container .describe-intro {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    margin: 0;
+    color: #000000;
+    letter-spacing: .1px;
+}
+
+.describe-details {
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #000000;
+}
+
+.button-intro {
+
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.button-intro a {
+    display: block;
+    border: #FF0000 solid 2px;
+    border-radius: 20px;
+    text-decoration: none;
+    width: 160px;
+    height: 25px;
+    margin: 0 auto;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+    background: #FF0000;
+    border-radius: 40px;
+    color: #FFFFFF;
+}
+
+.button-intro a:hover {
+    background-color: #fff;
+    color: #FF0000;
+}
+
+.img-introduce img {
+    min-width: 100%;
+}
