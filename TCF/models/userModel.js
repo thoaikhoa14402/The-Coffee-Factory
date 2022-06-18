@@ -86,8 +86,6 @@ userSchema.methods.createPasswordResetToken = function () {
   return resetToken; // send unencrypted reset token, but the reset token saved in the database is passwordResetToken which was encrypted
 };
 
-//mongoose.Error.messages.String.minlength = 'Password length must be greater or equal to 8';
-
 // Create model from schema above
 const User = mongoose.model('User', userSchema);
 

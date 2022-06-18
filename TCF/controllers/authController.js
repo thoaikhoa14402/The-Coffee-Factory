@@ -47,7 +47,7 @@ exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   // 1) Check if email and password exist
   if (!email || !password) {
-    return next(AppError('Please provide email and password'), 400);
+    return next(new AppError('Please provide email and password', 400));
   }
   // 2) Check if user exists && password is correct
   const user = await User.findOne({ email: email }).select('+password');
@@ -101,63 +101,6 @@ exports.restrictTo = function (...roles) {
 };
 
 // Forgot password handle
-// exports.forgotPassword = catchAsync(async (req, res, next) => {
-//   // 1) Get user based on POSTed email
-//   const user = await User.findOne({ email: req.body.email });
-//   if (!user) {
-//     return next(new AppError('There is no user with that email address', 404));
-//   }
-//   // 2) Generate the random reset token
-//   const resetToken = user.createPasswordResetToken();
-//   await user.save({ validateBeforeSave: false });
-//   // 3) Send it to user's email
-//   const resetURL = `${req.protocol}://${req.get('host')}/tcf/v1/users/resetPassword/${resetToken}`;
-//   //const message = `Forgot your pasword? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}.\nIf you didn't forget your password, please ignore this email!  `;
-//   const message = `Click vào đường dẫn sau để thay đổi mật khẩu của bạn <a href="${resetURL}">Link</a>`;
-//   try {
-//     await sendEmail({
-//       email: user.email,
-//       subject: 'Your password reset token (valid for 10min)',
-//       message,
-//     });
-
-//     res.status(200).json({
-//       status: 'success',
-//       message: 'Token sent to email!',
-//     });
-//   } catch (err) {
-//     // reset token and expires property if error occurs
-//     user.passwordResetToken = undefined;
-//     user.passwordResetExpires = undefined;
-//     await user.save({ validateBeforeSave: false });
-//     return next(new AppError('There was an error sending the email. Try again leter!', 500));
-//   }
-// });
-
-// Reset password handle
-// exports.resetPassword = catchAsync(async (req, res, next) => {
-//   // 1) Get user based on the token
-//   const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
-//   /* find user */
-//   const user = await User.findOne({ passwordResetToken: hashedToken, passwordResetExpires: { $gte: Date.now() } });
-//   // 2) If token has not expired, and there is user, set the new password
-//   if (!user) return next(new AppError('Token is invalid or has expired', 400));
-//   user.password = req.body.password; // if user exists, reset password
-//   user.passwordConfirm = req.body.passwordConfirm;
-//   user.passwordResetToken = undefined;
-//   user.passwordResetExpires = undefined;
-//   await user.save(); // dont need to turn off the validator, we want  validator to confirm password is equal to passwordConfirm
-//   // 3) Update changedPasswordAt property for the user
-//   // 4) Log the user in, send JWT
-//   const token = signToken(user._id);
-//   res.status(200).json({
-//     status: 'success',
-//     token,
-//   });
-//   //next();
-// });
-
-// Forgot password handle
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 1) Get user based on POSTed email
   const user = await User.findOne({ email: req.body.email });
@@ -165,25 +108,22 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     return next(new AppError('There is no user with that email address', 404));
   }
   // 2) Generate the random reset token
-  //signPasswordResetToken
+
+  // signPasswordResetToken
   const verification = crypto.randomBytes(3).toString('hex');
   const resetToken = signPasswordResetToken(verification);
-  // hash pasword reset Token
-  user.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
-  user.passwordResetExpires = Date.now() + 10 * 60 * 1000; // now time + 10 minitues
-  await user.save({ validateBeforeSave: false });
   // 3) Send it to user's email
-  // const message = `Mã xác nhận của bạn là ${verification}
-  // Vui lòng nhập mã này để có thể thay đổi mật khẩu.
-  // `;
-  const message = 'Mã xác nhận của bạn là ' + verification + '\n' + 'Vui lòng nhập mã này để có thể thay đổi mật khẩu.';
+  const message = `
+  Mã xác nhận của bạn là ${verification}
+  Vui lòng nhập mã này để có thể thay đổi mật khẩu.`;
   try {
     await sendEmail({
       email: user.email,
       subject: 'Your verification code (valid for 10min)',
       message,
     });
-
+    user.passwordResetExpires = Date.now() + 10 * 60 * 1000; // now time + 10 minitues
+    await user.save(); // dont need to turn off the validator, we want  validator to confirm password is equal to passwordConfirm
     res.status(200).json({
       status: 'success',
       token: resetToken,
@@ -201,17 +141,9 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 // Reset password handle
 exports.resetPassword = catchAsync(async (req, res, next) => {
   // 1) Get user based on the token
-  // let resetPasswordToken;
-  // if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-  //   resetPasswordToken = req.headers.authorization.split(' ')[1];
-  // }
   const resetToken = req.body.token;
-  const decoded = await promisify(jwt.verify)(resetToken, process.env.JWT_SECRET);
-  const { verification } = decoded;
   const hashedToken = crypto.createHash('sha256').update(resetToken).digest('hex');
   /* find user */
-  if (verification !== req.body.verificationCode)
-    return next(new AppError('Invalid verification code. Please try again', 400));
   const user = await User.findOne({ passwordResetToken: hashedToken, passwordResetExpires: { $gte: Date.now() } });
   // 2) If token has not expired, and there is user, set the new password
   if (!user) return next(new AppError('Token is invalid or has expired', 400));
@@ -227,7 +159,26 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     status: 'success',
     token,
   });
-  //next();
+});
+
+// verify verification code
+exports.verifyCode = catchAsync(async (req, res, next) => {
+  const user = await User.findOne({ email: req.body.email });
+  const resetToken = req.body.token;
+  const decoded = await promisify(jwt.verify)(resetToken, process.env.JWT_SECRET);
+  const { verification } = decoded;
+  if (verification !== req.body.verificationCode)
+    return next(new AppError('Invalid verification code. Please try again', 400));
+  // create new reset token, send to client (security)
+  const newResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+  // hash new reset token, and save it to database
+  user.passwordResetToken = crypto.createHash('sha256').update(newResetToken).digest('hex');
+  await user.save({ validateBeforeSave: false });
+  res.status(200).json({
+    status: 'success',
+    token: newResetToken,
+  });
+  next();
 });
 
 // Update password handle

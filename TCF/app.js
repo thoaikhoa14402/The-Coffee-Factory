@@ -1,4 +1,8 @@
 const express = require('express');
+const rateLimit = require('express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
 //const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs');
@@ -8,6 +12,14 @@ const globalErrorhandler = require('./controllers/errorController');
 
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
+
+// LIMIT REQUESTS FROM THE SAME API
+const limiter = rateLimit({
+  // limiter is now become a middleware function
+  max: 1000,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP, please try this again in an hour!',
+}); // define how many requests per IP we are going to allow in a certain of time
 
 const mime = {
   html: 'text/html',
@@ -24,30 +36,28 @@ const dir = path.join(__dirname);
 
 const app = express();
 
-app.use(express.json());
+// Cap phep cho toan bo clients co the truy cap
+app.use(cors());
 
-app.use(cors()); // cap phep cho toan bo clients co the truy cap
-// mounting routers
+// DATA sanitization against NoSQL query injection
+app.use(mongoSanitize());
 
+// DATA sanitization against XSS
+app.use(xss());
+
+// Prevent parameter pollution
+app.use(hpp());
+
+// BODY PARSER, READING DATA FROM BODY INTO REQ.BODY
+app.use(express.json({ limit: '10kb' }));
+app.use('/tcf', limiter);
+
+// Mounting routers
 app.use('/tcf/v1/users', userRouter); // mounting new router on route (URL)
 app.use('/tcf/v1/products', productRouter);
 
-//app.get('/tcf/v1/users', (req,res) -)
-
 // handle if url is not existent
 app.all('*', (req, res, next) => {
-  // method 1
-  // all is all http methods
-  // res.status(404).json({
-  //   status: 'fail',
-  //   message: `Can't find ${req.originalUrl} on this server`,
-  // });
-  // method 2
-  // const err = new Error(`Can't find ${req.originalUrl} on this server`);
-  // err.status = 'failed';
-  // err.statusCode = 404;
-  // next(err);
-  // method 3 (refactoring)
   const file = path.join(dir, req.path);
   const type = mime[path.extname(file).slice(1)];
   const s = fs.createReadStream(file);

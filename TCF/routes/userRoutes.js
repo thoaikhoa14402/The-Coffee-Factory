@@ -4,22 +4,30 @@ const authController = require('../controllers/authController'); // handle singu
 
 const router = express.Router();
 
-// signup handle
+// Signup handle
 router.post('/signup', authController.signup);
-// login handle
+
+// Login handle
 router.post('/login', authController.login);
-// forgot password handle
+
+// Forgot password handle
 router.post('/forgotPassword', authController.forgotPassword);
-// reset password handle
-//router.patch('/resetPassword/:token', authController.resetPassword);
+
+// Reset password handle
 router.patch('/resetPassword', authController.resetPassword);
 
-// update password handle
+// Validate verification code
+router.post('/validateCode', authController.verifyCode);
+
+// Update password handle
 router.patch('/updateMyPassword', authController.protect, authController.updatePassword);
-// update current user's data
+
+// Update current user's data
 router.patch('/updateMe', authController.protect, userController.updateMe);
+
 // Get all users, create user
 router.route('/').get(userController.getAllUsers).post(userController.createUser);
+
 // Get,update,delete user
 router.route('/:id').get(userController.getUser).patch(userController.updateUser).delete(userController.deleteUser);
 
