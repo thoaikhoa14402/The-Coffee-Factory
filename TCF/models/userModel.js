@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Please provide a password'],
-    minlength: 8,
+    minlength: [8, 'Password length must be greater or equal to 8'],
     select: false, // never show up password field in the output if select == false
   },
   passwordConfirm: {
@@ -85,6 +85,8 @@ userSchema.methods.createPasswordResetToken = function () {
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000; // now time + 10 minitues
   return resetToken; // send unencrypted reset token, but the reset token saved in the database is passwordResetToken which was encrypted
 };
+
+//mongoose.Error.messages.String.minlength = 'Password length must be greater or equal to 8';
 
 // Create model from schema above
 const User = mongoose.model('User', userSchema);

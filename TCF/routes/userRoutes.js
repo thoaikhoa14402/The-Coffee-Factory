@@ -11,7 +11,9 @@ router.post('/login', authController.login);
 // forgot password handle
 router.post('/forgotPassword', authController.forgotPassword);
 // reset password handle
-router.patch('/resetPassword/:token', authController.resetPassword);
+//router.patch('/resetPassword/:token', authController.resetPassword);
+router.patch('/resetPassword', authController.resetPassword);
+
 // update password handle
 router.patch('/updateMyPassword', authController.protect, authController.updatePassword);
 // update current user's data

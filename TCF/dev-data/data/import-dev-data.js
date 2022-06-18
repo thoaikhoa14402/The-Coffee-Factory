@@ -2,6 +2,7 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const Product = require('../../models/productModel');
+const User = require('../../models/userModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -17,7 +18,7 @@ mongoose
 
 const products = JSON.parse(fs.readFileSync(`${__dirname}/products.json`, 'utf-8'));
 // IMPORT DATA INTO DB
-const importData = async () => {
+const importProducts = async () => {
   try {
     await Product.create(products);
     console.log('Data successfully loaded');
@@ -28,7 +29,7 @@ const importData = async () => {
 };
 
 // DELETE ALL DATA FROM DB
-const deleteData = async () => {
+const deleteProducts = async () => {
   try {
     await Product.deleteMany();
     console.log('Data successfully deleted!');
@@ -38,8 +39,22 @@ const deleteData = async () => {
   process.exit();
 };
 
-if (process.argv[2] === '--import') {
-  importData();
-} else if (process.argv[2] === '--delete') {
-  deleteData();
+// DELETE ALL USERS DATA FROM DB
+const deleteUsers = async () => {
+  try {
+    await User.deleteMany();
+    console.log('Data of users successfully deleted!');
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+if (process.argv[2] === '--importProducts') {
+  importProducts();
+} else if (process.argv[2] === '--deleteProducts') {
+  deleteProducts();
+}
+  else if (process.argv[2] === '--deleteUsers') {
+    deleteUsers();
+  }
 }

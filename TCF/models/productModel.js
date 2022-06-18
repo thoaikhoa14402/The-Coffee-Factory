@@ -45,12 +45,12 @@ for (const name of Object.keys(nets)) {
 }
 
 // results["en0"][0]
-console.log(results);
+//console.log(results);
 productSchema.virtual('img').get(function () {
   const absoluteImg = [];
   this.relativeImg.forEach((el) => {
     absoluteImg.push(`http://${results['Wi-Fi'][0] || results['en0'][0]}:${process.env.PORT}/${el}`);
-    console.log(`http://${results['Wi-Fi'][0] || results['en0'][0]}:${process.env.PORT}/${el}`);
+    //console.log(`http://${results['Wi-Fi'][0] || results['en0'][0]}:${process.env.PORT}/${el}`);
   });
   return absoluteImg;
 });
