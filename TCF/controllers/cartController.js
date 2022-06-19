@@ -1,4 +1,5 @@
 const Cart = require ('../models/CartModel.js')
+const CatchAsync = require ('../utils/CatchAsync.js')
 
 exports.Shopping_Cart_Handle = async (req,res)=>{
     const checkUser = await Cart.exists({'idUser': req.body.idUser})
@@ -9,8 +10,8 @@ exports.Shopping_Cart_Handle = async (req,res)=>{
     }
     else{
         const updateProduct = await Cart.updateOne(
-            {idUser: req.body.idUser},
-            {products: [...req.body.products]}
+            { idUser: req.body.idUser },
+            { products: [...req.body.products] }
         )
         console.log(updateProduct)
         res.status(200).json(req.body.products)   
