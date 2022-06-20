@@ -16,8 +16,16 @@ mongoose
   })
   .then(() => console.log('DB connection successful!'));
 
-const products = JSON.parse(fs.readFileSync(`${__dirname}/products.json`, 'utf-8'));
-// IMPORT DATA INTO DB
+let products = JSON.parse(fs.readFileSync(`${__dirname}/products.json`, 'utf-8'));
+
+products = products.map((el) => {
+  el.relativeImg = el.relativeImg.map((pathImg) => {
+    return fs.readFileSync(pathImg, 'base64');
+  });
+  return el;
+})
+
+// const DATA INTO DB
 const importProducts = async () => {
   try {
     await Product.create(products);
@@ -28,7 +36,7 @@ const importProducts = async () => {
   process.exit();
 };
 
-// DELETE ALL DATA FROM DB
+// DELETE ALL DATA = DB
 const deleteProducts = async () => {
   try {
     await Product.deleteMany();
@@ -39,7 +47,7 @@ const deleteProducts = async () => {
   process.exit();
 };
 
-// DELETE ALL USERS DATA FROM DB
+// DELETE ALL USERS DATA = DB
 const deleteUsers = async () => {
   try {
     await User.deleteMany();
@@ -57,4 +65,4 @@ if (process.argv[2] === '--importProducts') {
   else if (process.argv[2] === '--deleteUsers') {
     deleteUsers();
   }
-}
+
