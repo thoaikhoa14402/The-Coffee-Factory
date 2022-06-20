@@ -6,7 +6,7 @@ exports.Shopping_Cart_Handle = async (req,res)=>{
     if(!checkUser){
         const newUser= await Cart.create(req.body)
         console.log(req.body)
-        res.status(200).json({ newUser})
+        res.status(200).json({newUser})
     }
     else{
         const updateProduct = await Cart.updateOne(
