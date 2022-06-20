@@ -49,7 +49,8 @@ for (const name of Object.keys(nets)) {
 productSchema.virtual('img').get(function () {
   const absoluteImg = [];
   this.relativeImg.forEach((el) => {
-    absoluteImg.push(`http://${results['Wi-Fi'][0] || results['en0'][0]}:${process.env.PORT}/${el}`);
+    //absoluteImg.push(`http://${results['Wi-Fi'][0] || results['en0'][0]}:${process.env.PORT}/${el}`);
+    absoluteImg.push(`data:image/jpg;base64,${el}`);
     //console.log(`http://${results['Wi-Fi'][0] || results['en0'][0]}:${process.env.PORT}/${el}`);
   });
   return absoluteImg;
