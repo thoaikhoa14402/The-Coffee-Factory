@@ -58,14 +58,15 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // 3) If everything is ok, send token to client
-  const cart = await cartController.Get_Shopping_Cart_Data(user._id);
-  console.log('cart: ', cart);
+  //const cart = await cartController.Get_Shopping_Cart_Data(user._id);
+  //console.log('cart: ', cart);
   const token = signToken(user._id);
+  //console.log(token);
   res.status(200).json({
     status: 'success',
     token,
-    idUser: user._id,
-    cart,
+    //idUser: user._id,
+    //cart,
   });
 });
 
@@ -76,6 +77,8 @@ exports.protect = catchAsync(async (req, res, next) => {
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1];
   }
+  console.log(token);
+  console.log(req.headers);
   if (!token) {
     return next(new AppError('You are not logged in! Please log in to get access'), 401);
   }
@@ -83,6 +86,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
   // 3) Check if user still exists
   const currentUser = await User.findById(decoded.id);
+  console.log("id user: ", decoded.id);
   if (!currentUser) {
     return next(new AppError('The user belonging to this token does no longer exist.', 401));
   }

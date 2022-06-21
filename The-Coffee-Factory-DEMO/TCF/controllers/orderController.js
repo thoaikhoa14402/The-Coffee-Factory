@@ -6,8 +6,8 @@ exports.Order_Handle = catchAsync(async (req, res, next) => {
   const dateTime = require('node-datetime').create().format('H:M:S d-m-Y');
   const dataGet = {
     status: 'Unprocessed',
-    idUser: req.body.idUser,
-    userName: req.body.userName,
+    idUser: req.user._id,
+    userName: req.user.email,
     address: req.body.address,
     phone: req.body.phone,
     products: [...req.body.products],

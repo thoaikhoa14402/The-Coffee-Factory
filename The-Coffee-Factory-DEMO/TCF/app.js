@@ -51,7 +51,7 @@ app.use(xss());
 app.use(hpp());
 
 // BODY PARSER, READING DATA FROM BODY INTO REQ.BODY
-app.use(express.json({ limit: '10kb' }));
+app.use(express.json({ limit: '10mb' }));
 app.use('/tcf', limiter);
 
 // Mounting routers
