@@ -1,5 +1,6 @@
 const express = require('express');
 const OrderController = require('../controllers/orderController');
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 
@@ -7,7 +8,7 @@ const router = express.Router();
 router.get('/history-ad', OrderController.History_Admin);
 
 //Order History for User
-router.post('/history-user', OrderController.History_User);
+router.post('/history-user', authController.protect, OrderController.History_User);
 
 //Add Order to History
 router.post('/orders', OrderController.Order_Handle);

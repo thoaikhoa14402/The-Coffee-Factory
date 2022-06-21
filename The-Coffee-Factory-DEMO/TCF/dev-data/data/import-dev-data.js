@@ -23,7 +23,7 @@ products = products.map((el) => {
     return fs.readFileSync(pathImg, 'base64');
   });
   return el;
-})
+});
 
 // const DATA INTO DB
 const importProducts = async () => {
@@ -61,8 +61,6 @@ if (process.argv[2] === '--importProducts') {
   importProducts();
 } else if (process.argv[2] === '--deleteProducts') {
   deleteProducts();
+} else if (process.argv[2] === '--deleteUsers') {
+  deleteUsers();
 }
-  else if (process.argv[2] === '--deleteUsers') {
-    deleteUsers();
-  }
-

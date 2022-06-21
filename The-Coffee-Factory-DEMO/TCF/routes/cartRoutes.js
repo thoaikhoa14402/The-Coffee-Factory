@@ -1,7 +1,6 @@
 const express = require('express');
 const CartController = require('../controllers/cartController');
-const authController = require('../controllers/authController'); // handle singup
-
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 
