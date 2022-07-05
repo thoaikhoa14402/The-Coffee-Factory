@@ -40,19 +40,22 @@ exports.Create_Product = catchAsync(async(req, res, next)=>{
     });
 })
 
-// exports.Create_Product = catchAsync(async(req, res, next)=>{
-//     let oldProduct = await Product.findOne({title: req.body.title})
-//     oldProduct.content.push(req.body.nameProduct)
-//     oldProduct.price.push(req.body.priceProduct)
-//     const newProduct = await Product.updateOne(
-//         { title: req.body.title },
-//         { content: [...oldProduct.content], price: [...oldProduct.price]}
-//     )
-//     res.status(200).json({
-//         status: 'success',
-//         NewUpdate: newProduct
-//     });
-// })
+exports.Delete_Product = catchAsync(async(req, res, next)=>{
+    let oldProduct = await Product.findOne({title: req.body.title})
+    let deleteIndex = oldProduct.content.indexOf(req.body.nameProduct)
+    if(deleteIndex!=-1){
+        oldProduct.content.splice(deleteIndex,1)
+        oldProduct.price.splice(deleteIndex,1)
+    }
+    const newProduct = await Product.updateOne(
+        { title: req.body.title },
+        { content: [...oldProduct.content], price: [...oldProduct.price]}
+    )
+    res.status(200).json({
+        status: 'success',
+        NewUpdate: newProduct
+    });
+})
 
 //Users management
 //----------------
