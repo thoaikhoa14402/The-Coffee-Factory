@@ -25,6 +25,21 @@ exports.History_Admin = catchAsync(async (req, res, next) => {
     });
 });
 
+exports.History_User = catchAsync(async (req, res, next) => {
+    const Orders = await Order.find(
+      { idUser: req.user._id },
+      { _id: false, __v: false, userName: false, address: false, phone: false }
+    );
+    if (Orders.length === 0) {
+      return next(new AppError('No product with this ID', 404));
+    }
+    res.status(200).json({
+      status: 'success',
+      size: Orders.length,
+      History: Orders,
+    });
+  });
+
 //Products management
 exports.Create_Product = catchAsync(async(req, res, next)=>{
     let oldProduct = await Product.findOne({title: req.body.title})

@@ -25,7 +25,4 @@ router.patch('/updateMyPassword', authController.protect, authController.updateP
 // Update current user's data
 router.patch('/updateMe', authController.protect, userController.updateMe);
 
-//Order History for User
-router.post('/history-user', authController.protect, userController.History_User);
-
 module.exports = router;
