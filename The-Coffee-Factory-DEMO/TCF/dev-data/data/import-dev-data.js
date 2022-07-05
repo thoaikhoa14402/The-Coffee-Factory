@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const Product = require('../../models/productModel');
 const User = require('../../models/userModel');
+const Cart = require('../../models/cartModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -57,10 +58,23 @@ const deleteUsers = async () => {
   }
 };
 
+// delete shopping carts
+const deleteShoppingCarts = async() => {
+  try {
+    await Cart.deleteMany();
+    console.log('Data of shopping cart successfully deleted!');
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
 if (process.argv[2] === '--importProducts') {
   importProducts();
 } else if (process.argv[2] === '--deleteProducts') {
   deleteProducts();
 } else if (process.argv[2] === '--deleteUsers') {
   deleteUsers();
+} else if (process.argv[2] === '--deleteShoppingCarts') {
+  deleteShoppingCarts();
 }

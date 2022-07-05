@@ -25,10 +25,7 @@ router.patch('/updateMyPassword', authController.protect, authController.updateP
 // Update current user's data
 router.patch('/updateMe', authController.protect, userController.updateMe);
 
-// Get all users, create user
-router.route('/').get(userController.getAllUsers).post(userController.createUser);
-
-// Get,update,delete user
-router.route('/:id').get(userController.getUser).patch(userController.updateUser).delete(userController.deleteUser);
+//Order History for User
+router.post('/history-user', authController.protect, userController.History_User);
 
 module.exports = router;
