@@ -57,5 +57,23 @@ exports.Delete_Product = catchAsync(async(req, res, next)=>{
     });
 })
 
+exports.Update_Product = catchAsync(async(req, res, next)=>{
+    let oldProduct = await Product.findOne({title: req.body.title})
+    let updateIndex = oldProduct.content.indexOf(req.body.nameProduct)
+    if(updateIndex!=-1){
+        oldProduct.content[updateIndex]=req.body.nameUpdate
+        oldProduct.price[updateIndex]=req.body.priceUpdate
+    }
+    const newProduct = await Product.updateOne(
+        { title: req.body.title },
+        { content: [...oldProduct.content], price: [...oldProduct.price]}
+    )
+    res.status(200).json({
+        status: 'success',
+        NewUpdate: newProduct
+    });
+})
+
+
 //Users management
 //----------------
