@@ -17,7 +17,7 @@ exports.Status_Handle = catchAsync(async (req, res, next) => {
 });
 
 exports.History_Admin = catchAsync(async (req, res, next) => {
-    const allOrders = await Order.find({}, { _id: false, __v: false });
+    const allOrders = await Order.find({}, { _id: false, __v: false, });
     res.status(200).json({
       status: 'success',
       size: allOrders.length,
@@ -26,7 +26,33 @@ exports.History_Admin = catchAsync(async (req, res, next) => {
 });
 
 //Products management
-//----------------
+exports.Create_Product = catchAsync(async(req, res, next)=>{
+    let oldProduct = await Product.findOne({title: req.body.title})
+    oldProduct.content.push(req.body.nameProduct)
+    oldProduct.price.push(req.body.priceProduct)
+    const newProduct = await Product.updateOne(
+        { title: req.body.title },
+        { content: [...oldProduct.content], price: [...oldProduct.price]}
+    )
+    res.status(200).json({
+        status: 'success',
+        NewUpdate: newProduct
+    });
+})
+
+// exports.Create_Product = catchAsync(async(req, res, next)=>{
+//     let oldProduct = await Product.findOne({title: req.body.title})
+//     oldProduct.content.push(req.body.nameProduct)
+//     oldProduct.price.push(req.body.priceProduct)
+//     const newProduct = await Product.updateOne(
+//         { title: req.body.title },
+//         { content: [...oldProduct.content], price: [...oldProduct.price]}
+//     )
+//     res.status(200).json({
+//         status: 'success',
+//         NewUpdate: newProduct
+//     });
+// })
 
 //Users management
 //----------------

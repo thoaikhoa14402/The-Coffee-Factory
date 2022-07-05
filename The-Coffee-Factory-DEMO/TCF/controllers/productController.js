@@ -6,8 +6,6 @@ exports.sendData = catchAsync(async (req, res, next) => {
   const productData = JSON.stringify(await Product.find({}));
   res.status(200).json({
     status: 'success',
-    data: {
-      productData,
-    },
+    data: { productData }
   });
 });

@@ -9,4 +9,7 @@ router.post('/update-status', authController.protect, adminController.Status_Han
 //Order History for Admin
 router.get('/history-ad', authController.protect, adminController.History_Admin);
 
+//Order History for Admin
+router.post('/create-product',adminController.Create_Product);
+
 module.exports = router;

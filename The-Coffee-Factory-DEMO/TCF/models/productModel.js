@@ -37,7 +37,7 @@ const Product = mongoose.model('Product', productSchema);
 // }
 
 // results["en0"][0]
-//console.log(results);
+// console.log(results);
 productSchema.virtual('img').get(function () {
   const absoluteImg = [];
   this.relativeImg.forEach((el) => {
