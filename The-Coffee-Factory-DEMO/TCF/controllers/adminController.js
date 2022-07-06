@@ -4,7 +4,7 @@ const Product = require('../models/productModel');
 const User = require('../models/userModel');
 const Order = require('../models/orderModel');
 
-//Orders
+//------------Orders---------------
 exports.Status_Handle = catchAsync(async (req, res, next) => {
     const updateStatus = await Order.updateOne(
         { idUser: req.user._id }, 
@@ -40,19 +40,17 @@ exports.History_User = catchAsync(async (req, res, next) => {
     });
   });
 
-//Products management
+//----------Products management----------
 exports.Create_Product = catchAsync(async(req, res, next)=>{
     let oldProduct = await Product.findOne({title: req.body.title})
     oldProduct.content.push(req.body.nameProduct)
     oldProduct.price.push(req.body.priceProduct)
+    oldProduct.topping.push(req.body.topping)
     const newProduct = await Product.updateOne(
         { title: req.body.title },
-        { content: [...oldProduct.content], price: [...oldProduct.price]}
+        { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping] }
     )
-    res.status(200).json({
-        status: 'success',
-        NewUpdate: newProduct
-    });
+    res.status(200).json({ status: 'success' })
 })
 
 exports.Delete_Product = catchAsync(async(req, res, next)=>{
@@ -61,15 +59,13 @@ exports.Delete_Product = catchAsync(async(req, res, next)=>{
     if(deleteIndex!=-1){
         oldProduct.content.splice(deleteIndex,1)
         oldProduct.price.splice(deleteIndex,1)
+        oldProduct.topping.splice(deleteIndex,1)
+        const newProduct = await Product.updateOne(
+            { title: req.body.title },
+            { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping]}
+        )
     }
-    const newProduct = await Product.updateOne(
-        { title: req.body.title },
-        { content: [...oldProduct.content], price: [...oldProduct.price]}
-    )
-    res.status(200).json({
-        status: 'success',
-        NewUpdate: newProduct
-    });
+    res.status(200).json({ status: 'success' })
 })
 
 exports.Update_Product = catchAsync(async(req, res, next)=>{
@@ -78,17 +74,14 @@ exports.Update_Product = catchAsync(async(req, res, next)=>{
     if(updateIndex!=-1){
         oldProduct.content[updateIndex]=req.body.nameUpdate
         oldProduct.price[updateIndex]=req.body.priceUpdate
+        oldProduct.topping[updateIndex]=[...req.body.toppingUpdate]
+        const newProduct = await Product.updateOne(
+            { title: req.body.title },
+            { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping] }
+        )
     }
-    const newProduct = await Product.updateOne(
-        { title: req.body.title },
-        { content: [...oldProduct.content], price: [...oldProduct.price]}
-    )
-    res.status(200).json({
-        status: 'success',
-        NewUpdate: newProduct
-    });
+    res.status(200).json({ status: 'success' })
 })
 
-
-//Users management
-//----------------
+//-----------Users management------------
+//------

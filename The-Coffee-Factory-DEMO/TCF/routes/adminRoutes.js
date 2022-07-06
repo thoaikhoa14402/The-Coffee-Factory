@@ -3,8 +3,7 @@ const authController = require('../controllers/authController');
 const adminController = require('../controllers/adminController');
 const router = express.Router();
 
-//------------------------------
-//Orders
+//------------Orders-------------
 
 //Update process status
 router.post('/update-status', authController.protect, adminController.Status_Handle);
@@ -15,8 +14,7 @@ router.get('/history-ad', authController.protect, adminController.History_Admin)
 //Order History for User
 router.post('/history-user', authController.protect, adminController.History_User);
 
-//------------------------------
-//Products
+//----------Products-------------
 
 //Create new product for Admin
 router.post('/create-product',adminController.Create_Product);
@@ -27,8 +25,7 @@ router.post('/delete-product',adminController.Delete_Product);
 //Update product for Admin
 router.post('/update-product',adminController.Update_Product);
 
-//-------------------------------
-//Users
-
+//-----------Users--------------
+//
 
 module.exports = router;
