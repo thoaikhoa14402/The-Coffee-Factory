@@ -14,6 +14,7 @@ const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 const cartRouter = require('./routes/cartRoutes');
 const orderRouter = require('./routes/orderRoutes');
+const adminRouter = require('./routes/adminRoutes');
 
 // LIMIT REQUESTS FROM THE SAME API
 const limiter = rateLimit({
@@ -59,6 +60,7 @@ app.use('/tcf/v1/users', userRouter); // mounting new router on route (URL)
 app.use('/tcf/v1/products', productRouter);
 app.use('/tcf/v1/cart', cartRouter);
 app.use('/tcf/v1/order', orderRouter);
+app.use('/tcf/v1/admin', adminRouter);
 
 // handle if url is not existent
 app.all('*', (req, res, next) => {
