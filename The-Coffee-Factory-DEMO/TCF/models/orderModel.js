@@ -2,14 +2,21 @@ const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
   status: { type: String },
-  idUser: {
-    type: String,
-  },
-  userName: {
-    type: String,
-  },
-  address: { type: String, required: [true, 'Must have Product Name'] },
+
+  //Infomation
+  idUser: { type: String},
+  paymentMethod: { type: String },
+  userName: { type: String},
   phone: { type: String, required: [true, 'Must have Phone Number'] },
+  address: { type: String, required: [true, 'Must have Product Name'] },
+  noteAll: { type: String },
+  methodDelivery: {type: String},
+  storeLocation: {type: String},
+  promotion: {type: String},
+  totalPrice: {type: Number},
+  dateOrder: { type: String },
+  
+  // Product 
   products: [
     {
       productName: { type: String, required: [true, 'Must have Product Name'] },
@@ -25,21 +32,20 @@ const orderSchema = new mongoose.Schema({
       },
       topping: { type: String },
       price: {
-        type: Number,
+        type: String,
         required: [true, 'Must have price'],
         validate: {
           validator: function () {
-            return this.price >= 0;
+            return this.price.slice(0,-1)*1000 >= 0;
           },
           message: 'price must greater or equal than 0',
         },
       },
       note: { type: String },
-    },
+      image: { type: String }
+    },  
   ],
-  totalPrice: {type: String},
-  noteAll: { type: String },
-  dateOrder: { type: String },
+
 });
 
 const Order = mongoose.model('payment_history', orderSchema);

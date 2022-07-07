@@ -5,8 +5,8 @@ const User = require('../models/userModel');
 const Order = require('../models/orderModel');
 const catchAsync = require('../utilities/catchAsync');
 const AppError = require('../utilities/appError');
-const orderController = require('../controllers/orderController')
-const cartController = require('../controllers/cartController')
+const orderController = require('./orderController');
+const cartController = require('./cartController');
 const sendEmail = require('../utilities/email');
 
 // signToken
@@ -58,24 +58,26 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // 3) If everything is ok, send token to client
-  const cart = await cartController.Get_Shopping_Cart_Data(user._id);
-  console.log("cart: ", cart);
+  //const cart = await cartController.Get_Shopping_Cart_Data(user._id);
+  //console.log('cart: ', cart);
   const token = signToken(user._id);
+  //console.log(token);
   res.status(200).json({
     status: 'success',
     token,
-    idUser: user._id,
-    cart
+    //idUser: user._id,
+    //cart,
   });
 });
 
 // protect handle
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting token and check of it's there
-  let token;
+  let token = '';
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1];
   }
+  if (token == '' && req.body.userAction == 'order') next();
   if (!token) {
     return next(new AppError('You are not logged in! Please log in to get access'), 401);
   }

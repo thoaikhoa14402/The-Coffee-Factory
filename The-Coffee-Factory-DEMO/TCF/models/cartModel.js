@@ -17,18 +17,20 @@ const cartScheme = new mongoose.Schema({
       },
       topping: { type: String },
       price: {
-        type: Number,
+        type: String,
         required: [true, 'Must have price'],
         validate: {
           validator: function () {
-            return this.price >= 0;
+            return this.price.slice(0,-1)*1000 >= 0;
           },
           message: 'price must greater or equal than 0',
         },
       },
       note: { type: String },
+      image: { type: String },
     },
   ],
+  totalPrice:{type:Number}
 });
 
 const Cart = mongoose.model('shopping_cart', cartScheme);

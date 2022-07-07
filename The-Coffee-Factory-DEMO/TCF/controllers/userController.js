@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const catchAsync = require('../utilities/catchAsync');
 const AppError = require('../utilities/appError');
+const Order = require('../models/orderModel');
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -23,41 +24,6 @@ exports.getAllUsers = catchAsync(async (req, res) => {
   });
 });
 
-// create user
-exports.createUser = (req, res) => {
-  // status 500: internal server error
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined',
-  });
-};
-
-// get user
-exports.getUser = (req, res) => {
-  // status 500: internal server error
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined',
-  });
-};
-
-// update user
-exports.updateUser = (req, res) => {
-  // status 500: internal server error
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined',
-  });
-};
-
-// delete user
-exports.deleteUser = (req, res) => {
-  // status 500: internal server error
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined',
-  });
-};
 
 // update user
 exports.updateMe = catchAsync(async (req, res, next) => {
@@ -71,3 +37,4 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filterBody, { new: true, runValidators: true });
   res.status(200).json({ status: 'success', data: { user: updatedUser } });
 });
+
