@@ -35,19 +35,12 @@ const Product = () => {
                 <span className='ellipses'></span>
                 <span className='ellipses'></span>
             </div>
-            <div className={'img-bubble-left ' + (hover === 1 ? "img-bubble-left-animation" : "")}>
-                <img src='../../img/BUBBLEL.png' className='img-bubble-chart'>
-                </img>
-            </div>
-
-            <div className={'img-bubble-right ' + (hover === 2 ? "img-bubble-right-animation" : "")}>
-                <img src='../../img/BUBBLER.png' className='img-bubble-chart'>
-                </img>
-            </div>
-
             <div className='background-yellow-flex'>
-
                 <div className='background-yellow'>
+                    <div className={'img-bubble-left ' + (hover === 1 ? "img-bubble-left-animation" : "")}>
+                        <img src='../../img/BUBBLEL.png' className='img-bubble-chart'>
+                        </img>
+                    </div>
                     <img src='../../img/RectangleL.png' className='img-tea-left'
                     >
                     </img>
@@ -63,8 +56,11 @@ const Product = () => {
                     </div>
                 </div>
 
-
                 <div className='background-yellow'>
+                    <div className={'img-bubble-right ' + (hover === 2 ? "img-bubble-right-animation" : "")}>
+                        <img src='../../img/BUBBLER.png' className='img-bubble-chart'>
+                        </img>
+                    </div>
                     <img src='../../img/RectangleR.png' className='img-tea-right'
                     >
                     </img>

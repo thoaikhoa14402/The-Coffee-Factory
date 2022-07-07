@@ -34,18 +34,23 @@
     margin-left: 50px;
 }
 
-.detail-describe p {
+.detail-describe .describe {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 12px;
     display: flex;
     align-items: center;
     color: #000000;
+    text-decoration: none;
 }
 
-.detail-describe p:hover {
+.detail-describe .describe.title-color {
+    color: rgba(172, 1, 1, 1) !important;
+}
+
+.detail-describe .describe:hover {
     color: rgba(172, 1, 1, 1);
     cursor: pointer;
 }

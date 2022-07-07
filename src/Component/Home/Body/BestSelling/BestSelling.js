@@ -27,7 +27,7 @@ const BestSelling = () => {
 
                 <div className='selling-card'>
                     <div className='img-product'>
-                        <img src='../../ImgProduct/TràDưaHấuVải.png'></img>
+                        <img src='../../ImgProduct/TraDuaHauVai.png'></img>
                     </div>
                     <p>Trà Dưa Hấu Vải</p>
                     <p className='price-vnd'>42.000đ</p>
@@ -57,7 +57,7 @@ const BestSelling = () => {
 
                 <div className='selling-card'>
                     <div className='img-product'>
-                        <img src='../../ImgProduct/TràHibicuslựuđỏ.png'></img>
+                        <img src='../../ImgProduct/TraHibicusluudo.png'></img>
                     </div>
                     <p>Trà Hibicus Lựu Đỏ</p>
                     <p className='price-vnd'>42.000đ</p>
@@ -72,7 +72,7 @@ const BestSelling = () => {
 
                 <div className='selling-card'>
                     <div className='img-product'>
-                        <img src='../../ImgProduct/ChocolateCaramelĐáXay.png'></img>
+                        <img src='../../ImgProduct/ChocolateCaramelDaXay.png'></img>
                     </div>
                     <p>Chocolate Caramel</p>
                     <p className='price-vnd'>45.000đ</p>

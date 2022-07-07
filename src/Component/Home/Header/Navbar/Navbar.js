@@ -1,8 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { Link, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
-import Navbars from './Navbar.css';
+import './Navbar.css';
 
 const Navbar = () => {
+    const [current, setState] = useState(1);
+
+    const state = useLocation();
+
+    useEffect(() => {
+        if (state.pathname == '/')
+            setState(1)
+        else if (state.pathname == '/product')
+            setState(2)
+        else if (state.pathname == '/store')
+            setState(4)
+    }, [state]);
+
     return (
         <div className='navbar-container'>
             <div className='container-details'>
@@ -10,11 +24,12 @@ const Navbar = () => {
                     <img src="../../img/Logo.png" alt="logo"></img>
                 </div>
                 <div className='detail-describe'>
-                    <p>TRANG CHỦ</p>
-                    <p>SẢN PHẨM</p>
-                    <p>THÔNG TIN ƯU ĐÃI</p>
-                    <p>CỬA HÀNG</p>
-                    <p>LIÊN HỆ</p>
+                    <Link className={`describe ${(current == 1) ? 'title-color' : ''}`} to= "/">TRANG CHỦ</Link>
+                    <Link className={`describe ${(current == 2) ? 'title-color' : ''}`} to= "/product">SẢN PHẨM</Link>
+                    <Link className='describe' to= "/infor">THÔNG TIN ƯU ĐÃI</Link>
+                    <Link className={`describe ${(current == 4) ? 'title-color' : ''}`} to= "/store">CỬA HÀNG</Link>
+                    <Link className='describe' to= "/connect">LIÊN HỆ</Link>
+
                 </div>
             </div>
 

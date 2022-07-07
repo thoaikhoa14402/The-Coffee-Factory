@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import "./Introduce.css"
 import { ImgCoffee1, ImgCoffee2, ImgCoffeeL, ImgCoffeeR } from './ImgCoffee';
+import { Link } from 'react-router-dom';
 
 const Introduce = () => {
     return (
@@ -22,7 +23,7 @@ const Introduce = () => {
                     với phong cách khá lạ mắt: tất cả máy rang, xay cà phê, bàn ghế, ống nước cùng được bố trí trong một không gian nhỏ thoáng đãng.
                 </p>
                 <div className='button-intro'>
-                    <a href='/'>XEM THÊM</a>
+                    <Link to = "/home/introducePage" >XEM THÊM</Link>
                 </div>
             </div>
             <div className='img-introduce'>

@@ -194,13 +194,13 @@
     height: 175px;
     z-index: 35;
     right: 50%;
-    transform: translateX(-135%);
-    top: 290px;
+    transform: translateX(-10%);
+    top: -300px;
     transition: .3s;
 }
 
 .img-bubble-left-animation {
-    transform: scale(0.5) translateX(-790px) translateY(550px);
+    transform: scale(0.5) translateX(-150px) translateY(550px);
 }
 
 .img-bubble-right {
@@ -209,13 +209,13 @@
     height: 175px;
     z-index: 35;
     left: 50%;
-    transform: translateX(130%);
-    top: 290px;
+    transform: translateX(10%);
+    top: -300px;
     transition: .3s;
 }
 
 .img-bubble-right-animation {
-    transform: scale(0.5) translateX(790px) translateY(550px);
+    transform: scale(0.5) translateX(150px) translateY(550px);
 }
 
 .img-tea-left,
