@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    reuqired: [true, 'Please tell us your name'],
+    //required: [true, 'Please tell us your name'],
   },
   email: {
     type: String,
@@ -16,6 +16,14 @@ const userSchema = new mongoose.Schema({
     validate: [validator.isEmail, 'Please provide a valid email'],
   },
   photo: String,
+  phoneNumber: String,
+  gender: String,
+  birthday: String,
+  address: String,
+  status: {
+    type: String,
+    default: 'active',
+  },
   role: {
     type: String,
     enum: ['user', 'guide', 'lead-guide', 'admin'],

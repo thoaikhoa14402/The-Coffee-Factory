@@ -60,26 +60,24 @@ const deleteUsers = async () => {
 };
 
 // delete shopping carts
-const deleteShoppingCarts = async() => {
+const deleteShoppingCarts = async () => {
   try {
     await Cart.deleteMany();
     console.log('Data of shopping cart successfully deleted!');
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 // delete payment history
-const deletePaymentHistory = async() => {
+const deletePaymentHistory = async () => {
   try {
     await Order.deleteMany();
     console.log('Data of payment history successfully deleted!');
   } catch (err) {
     console.log(err);
   }
-}
-
-
+};
 
 if (process.argv[2] === '--importProducts') {
   importProducts();

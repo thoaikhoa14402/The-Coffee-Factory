@@ -17,15 +17,31 @@ router.post('/history-user', authController.protect, adminController.History_Use
 //----------Products-------------
 
 //Create new product for Admin
-router.post('/create-product',adminController.Create_Product);
+router.post('/create-product', adminController.Create_Product);
 
 //Delete product for Admin
-router.post('/delete-product',adminController.Delete_Product);
+router.post('/delete-product', adminController.Delete_Product);
 
 //Update product for Admin
-router.post('/update-product',adminController.Update_Product);
+router.post('/update-product', adminController.Update_Product);
 
 //-----------Users--------------
-//
+// get all users from DB
+router.get('/get-all-users', adminController.getAllUsers);
+
+// get user by email from DB
+router.get('/get-user', adminController.getUser);
+
+// create new user
+router.post('/create-user', adminController.createUser);
+
+// delete user
+router.delete('/delete-user/:id', adminController.deleteUser);
+
+// block user
+router.patch('/block-user/:id', adminController.blockUser);
+
+// update user
+router.patch('/update-user/:id', adminController.updateUser);
 
 module.exports = router;
