@@ -5,7 +5,7 @@ const AppError = require('../utilities/appError');
 exports.Order_Handle = catchAsync(async (req, res, next) => {
   const dateTime = require('node-datetime').create().format('H:M:S d-m-Y');
   const dataGet = {
-    status: 'Unprocessed',
+    status: 'Processing',
     //Information
     idUser: req.user._id,
     paymentMethod: req.body.paymentMethod,

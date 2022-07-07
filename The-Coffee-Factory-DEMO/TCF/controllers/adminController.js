@@ -6,18 +6,26 @@ const Order = require('../models/orderModel');
 
 //------------Orders---------------
 exports.Status_Handle = catchAsync(async (req, res, next) => {
+    let newStatus = "Delivered"
+    if(req.body.status === "Processing") newStatus = "Shipping"
+    else if (req.body.status === "Shipping") newStatus = "Delivered"
+    else if (req.body.status === "Cancel") newStatus = "Cancel"
     const updateStatus = await Order.updateOne(
-        { idUser: req.user._id }, 
-        { status: req.body.status}
+        { _id: req.body._id }, 
+        { status: newStatus}
+    );
+    const orderUpdate = await Order.findOne(
+        { _id: req.body._id}, 
+        { __v: false, }
     );
     res.status(200).json({      
         status: 'success',
-        Update: req.body
+        update: orderUpdate
     });
 });
 
 exports.History_Admin = catchAsync(async (req, res, next) => {
-    const allOrders = await Order.find({}, { _id: false, __v: false, });
+    const allOrders = await Order.find({}, { __v: false, });
     res.status(200).json({
       status: 'success',
       size: allOrders.length,
@@ -62,7 +70,7 @@ exports.Delete_Product = catchAsync(async(req, res, next)=>{
         oldProduct.topping.splice(deleteIndex,1)
         const newProduct = await Product.updateOne(
             { title: req.body.title },
-            { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping]}
+            { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping] }
         )
     }
     res.status(200).json({ status: 'success' })
