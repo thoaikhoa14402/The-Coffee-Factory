@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const Product = require('../../models/productModel');
 const User = require('../../models/userModel');
 const Cart = require('../../models/cartModel');
+const Order = require('../../models/orderModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -68,6 +69,17 @@ const deleteShoppingCarts = async() => {
   }
 }
 
+// delete payment history
+const deletePaymentHistory = async() => {
+  try {
+    await Order.deleteMany();
+    console.log('Data of payment history successfully deleted!');
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
 
 if (process.argv[2] === '--importProducts') {
   importProducts();
@@ -77,4 +89,6 @@ if (process.argv[2] === '--importProducts') {
   deleteUsers();
 } else if (process.argv[2] === '--deleteShoppingCarts') {
   deleteShoppingCarts();
+} else if (process.argv[2] === '--deletePaymentHistory') {
+  deletePaymentHistory();
 }

@@ -1,6 +1,9 @@
 const Order = require('../models/orderModel');
 const catchAsync = require('../utilities/catchAsync');
 const AppError = require('../utilities/appError');
+const socketIO = require('../server');
+
+
 
 exports.Order_Handle = catchAsync(async (req, res, next) => {
   const dateTime = require('node-datetime').create().format('H:M:S d-m-Y');
@@ -22,6 +25,9 @@ exports.Order_Handle = catchAsync(async (req, res, next) => {
     products: [...req.body.products],
   };
   const newOrder = await Order.create(dataGet);
+
+  socketIO.onPayment(newOrder);
+
   res.status(200).json({
     status: 'success',
     newOrder,
