@@ -39,7 +39,7 @@ mongoose
   }
 
 products = products.map((el) => {
-  el.relativeImg = el.relativeImg.map((pathImg) => {
+  el.img = el.img.map((pathImg) => {
     return `data:${extFile[pathImg.substring(pathImg.lastIndexOf('.')).split('.')[1].toLowerCase()]};base64,${fs.readFileSync(pathImg, 'base64')}`;
   });
   return el;

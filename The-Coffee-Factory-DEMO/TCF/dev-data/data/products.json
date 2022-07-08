@@ -12,7 +12,7 @@
     ],
     "price": ["45.000đ", "29.000đ", "32.000đ", "52.000đ", "39.000đ", "39.000đ", "39.000đ"],
     "topping": [[""], [""], [""], [""], [""], [""], [""]],
-    "relativeImg": [
+    "img": [
       "dev-data/img/products/1/1.1.1.jpg",
       "dev-data/img/products/1/1.1.2.jpg",
       "dev-data/img/products/1/1.1.3.jpg",
@@ -28,7 +28,7 @@
     "content": ["Espresso", "Americano", "Mocha", "Caramel Macchiato", "Macchiato", "Cappuccino", "Café Latte"],
     "price": ["25.000đ", "33.000đ", "36.000đ", "47.000đ", "28.000đ", "36.000đ", "36.000đ"],
     "topping": [[""], [""], ["Hương Vani", "Hương Hạt Dẻ"], [""], [""], [""], ["Hương Vani", "Hương Hạt Dẻ"]],
-    "relativeImg": [
+    "img": [
       "dev-data/img/products/1/1.1.2.jpg",
       "dev-data/img/products/1/1.1.3.jpg",
       "dev-data/img/products/1/1.2.1.jpg",
@@ -68,7 +68,7 @@
       "45.000đ"
     ],
     "topping": [[""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""]],
-    "relativeImg": [
+    "img": [
       "dev-data/img/products/2/2.1.1.jpg",
       "dev-data/img/products/2/2.1.1.jpg",
       "dev-data/img/products/2/2.1.1.jpg",
@@ -88,7 +88,7 @@
     "content": ["Dâu", "Dâu Việt Quất", "Việt Quất"],
     "price": ["49.000đ", "49.000đ", "49.000đ"],
     "topping": [[""], [""], [""]],
-    "relativeImg": [
+    "img": [
       "dev-data/img/products/2/2.2.1.jpg",
       "dev-data/img/products/2/2.2.2.jpg",
       "dev-data/img/products/2/2.2.3.jpg"
@@ -118,7 +118,7 @@
       ["Trân Châu Trắng", "Thạch Cà Phê"],
       ["Trân Châu Trắng", "Thạch Cà Phê"]
     ],
-    "relativeImg": [
+    "img": [
       "dev-data/img/products/3/3.1.1.jpg",
       "dev-data/img/products/3/3.1.1.jpg",
       "dev-data/img/products/3/3.1.2.jpg",
@@ -135,7 +135,7 @@
     "content": ["Sunset", "Purple", "Chanh", "Bluesky", "Blueberry"],
     "price": ["49.000đ", "49.000đ", "49.000đ", "49.000đ", "49.000đ"],
     "topping": [[""], [""], [""], [""], [""]],
-    "relativeImg": [
+    "img": [
       "dev-data/img/products/4/4.1.1.jpg",
       "dev-data/img/products/4/4.1.2.jpg",
       "dev-data/img/products/4/4.1.3.jpg",
@@ -150,7 +150,7 @@
     "content": ["Mojito Vải", "Mojito Đào", "Mojito Chanh Dây", "Mojito Dâu"],
     "price": ["42.000đ", "42.000đ", "42.000đ", "42.000đ"],
     "topping": [[""], [""], [""], [""]],
-    "relativeImg": [
+    "img": [
       "dev-data/img/products/4/4.2.1.jpg",
       "dev-data/img/products/4/4.2.2.jpg",
       "dev-data/img/products/4/4.2.3.jpg",
@@ -163,7 +163,7 @@
     "content": ["Bánh Mì Thịt Nguội Phô Mai", "Bánh Mì Kẹp Cá Ngừ"],
     "price": ["39.000đ", "39.000đ"],
     "topping": [[""], [""]],
-    "relativeImg": ["dev-data/img/products/7/7.1.1.jpg", "dev-data/img/products/7/7.1.2.jpg"],
+    "img": ["dev-data/img/products/7/7.1.1.jpg", "dev-data/img/products/7/7.1.2.jpg"],
     "hiddenTitle": false
   },
   {
@@ -171,7 +171,7 @@
     "content": ["Bánh Bắp", "Bánh Chuối"],
     "price": ["20.000đ", "20.000đ"],
     "topping": [[""], [""]],
-    "relativeImg": ["dev-data/img/products/7/7.2.1.jpg", "dev-data/img/products/7/7.2.2.jpg"],
+    "img": ["dev-data/img/products/7/7.2.1.jpg", "dev-data/img/products/7/7.2.2.jpg"],
     "hiddenTitle": false
   },
   {
@@ -188,7 +188,7 @@
     ],
     "price": ["29.000đ", "29.000đ", "29.000đ", "29.000đ", "29.000đ", "29.000đ", "29.000đ", "29.000đ"],
     "topping": [[""], [""], [""], [""], [""], [""], [""], [""]],
-    "relativeImg": [
+    "img": [
       "dev-data/img/products/7/7.3.1.jpg",
       "dev-data/img/products/7/7.3.2.jpg",
       "dev-data/img/products/7/7.3.3.jpg",
@@ -205,7 +205,7 @@
     "content": ["Flan Gateau", "Flan Caramel"],
     "price": ["29.000đ", "20.000đ"],
     "topping": [[""], [""]],
-    "relativeImg": ["dev-data/img/products/7/7.4.1.jpg", "dev-data/img/products/7/7.4.2.jpg"],
+    "img": ["dev-data/img/products/7/7.4.1.jpg", "dev-data/img/products/7/7.4.2.jpg"],
     "hiddenTitle": false
   },
   {
@@ -213,7 +213,7 @@
     "content": ["Yogurt Nếp Cẩm", "Yogurt"],
     "price": ["20.000đ", "15.000đ"],
     "topping": [[""], [""]],
-    "relativeImg": ["dev-data/img/products/7/7.4.3.jpg", "dev-data/img/products/7/7.4.4.jpg"],
+    "img": ["dev-data/img/products/7/7.4.3.jpg", "dev-data/img/products/7/7.4.4.jpg"],
     "hiddenTitle": true
   }
 ]
