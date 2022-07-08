@@ -88,7 +88,6 @@ exports.Update_Product = catchAsync(async (req, res, next) => {
 });
 
 //-----------Users management------------
-//------
 // get all users
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await User.find();
