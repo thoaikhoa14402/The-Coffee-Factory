@@ -4,23 +4,23 @@ const catchAsync = require('../utilities/catchAsync');
 exports.Shopping_Cart_Handle = catchAsync(async (req, res) => {
   const checkUser = await Cart.exists({ idUser: req.user._id });
   if (!checkUser) {
-    const reqIdUser ={
+    const reqIdUser = {
       idUser: req.user._id,
       products: [...req.body.products],
-      totalPrice: req.body.totalPrice
-    }
+      totalPrice: req.body.totalPrice,
+    };
     const newUser = await Cart.create(reqIdUser);
     res.status(200).json({ status: 'success' });
   } 
   else {
     const updateProduct = await Cart.updateOne(
-      { idUser: req.user._id }, 
-      { 
-        products: [...req.body.products], 
-        totalPrice: req.body.totalPrice 
+      { idUser: req.user._id },
+      {
+        products: [...req.body.products],
+        totalPrice: req.body.totalPrice,
       }
     );
-    res.status(200).json({status: 'success'});
+    res.status(200).json({ status: 'success' });
   }
 });
 
