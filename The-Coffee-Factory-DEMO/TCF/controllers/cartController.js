@@ -20,7 +20,7 @@ exports.Shopping_Cart_Handle = catchAsync(async (req, res) => {
         totalPrice: req.body.totalPrice 
       }
     );
-    res.status(200).json(req.body.products);
+    res.status(200).json({status: 'success'});
   }
 });
 
@@ -29,5 +29,8 @@ exports.Get_Shopping_Cart = catchAsync(async (req, res) => {
     { idUser: req.user._id }, 
     { _id: false, __v: false, idUser: false }
   )
-  res.status(200).json(Carts);
+  res.status(200).json({
+    status: 'success',
+    data: Carts
+  });
 });

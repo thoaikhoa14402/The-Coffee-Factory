@@ -23,6 +23,12 @@ const signPasswordResetToken = function (verification) {
   });
 };
 
+const signAdminToken = function (id, role) {
+  return jwt.sign({ id: id, role: role }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+};
+
 // sign up handle
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
@@ -49,27 +55,36 @@ exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   // 1) Check if email and password exist
   if (!email || !password) {
-    return next(new AppError('Please provide email and password', 400));
+    return next(AppError('Please provide email and password'), 400);
   }
   // 2) Check if user exists && password is correct
   const user = await User.findOne({ email: email }).select('+password');
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError('Incorrect email or password', 401));
   }
-
-  // 3) If everything is ok, send token to client
-  //const cart = await cartController.Get_Shopping_Cart_Data(user._id);
-  //console.log('cart: ', cart);
-  const token = signToken(user._id);
-  //console.log(token);
-  res.status(200).json({
-    status: 'success',
-    token,
-    //idUser: user._id,
-    //cart,
-  });
+  req.user = user;
+  next();
 });
 
+// validate role
+exports.validateRole = catchAsync(async (req, res, next) => {
+  if (req.body.loginAs !== req.user.role) return next(AppError('You do not have permission to perform this action'));
+  if (req.user.role === 'customer') {
+    // If everything is ok, send token to client (customer token)
+    const token = signToken(req.user._id);
+    res.status(200).json({
+      status: 'success',
+      token,
+    });
+  } else if (req.user.role === 'admin') {
+    // If everything is ok, send token to client (admin token)
+    const token = signAdminToken(req.user._id, req.user.role);
+    res.status(200).json({
+      status: 'success',
+      token,
+    });
+  }
+});
 // protect handle
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting token and check of it's there
@@ -83,6 +98,33 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
   // 2) Verfication token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  // 3) Check if user still exists
+  const currentUser = await User.findById(decoded.id);
+  if (!currentUser) {
+    return next(new AppError('The user belonging to this token does no longer exist.', 401));
+  }
+  // 4) Check if user changed password after the token was issued
+  if (currentUser.changedPasswordAfter(decoded.iat)) {
+    return next(new AppError('User recently changed password! Please log in again.'), 401);
+  }
+  // GRANT ACCESS TO PROTECT ROUTE
+  req.user = currentUser;
+  next();
+});
+
+// protect handle for admin
+exports.protectForAdmin = catchAsync(async (req, res, next) => {
+  // 1) Getting token and check of it's there
+  let token;
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+  if (!token) {
+    return next(new AppError('You are not logged in! Please log in to get access'), 401);
+  }
+  // 2) Verfication token
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  if (decoded.role !== 'admin') return next(new AppError('You do not have permission to perform this action.'), 401);
   // 3) Check if user still exists
   const currentUser = await User.findById(decoded.id);
   if (!currentUser) {
