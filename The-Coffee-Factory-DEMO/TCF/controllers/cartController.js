@@ -10,7 +10,7 @@ exports.Shopping_Cart_Handle = catchAsync(async (req, res) => {
       totalPrice: req.body.totalPrice
     }
     const newUser = await Cart.create(reqIdUser);
-    res.status(200).json({ newUser });
+    res.status(200).json({ status: 'success' });
   } 
   else {
     const updateProduct = await Cart.updateOne(
@@ -29,8 +29,5 @@ exports.Get_Shopping_Cart = catchAsync(async (req, res) => {
     { idUser: req.user._id }, 
     { _id: false, __v: false, idUser: false }
   )
-  res.status(200).json({
-    status: 'success',
-    data: Carts
-  });
+  res.status(200).json(Carts);
 });
