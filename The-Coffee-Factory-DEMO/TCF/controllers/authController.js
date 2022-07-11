@@ -55,7 +55,7 @@ exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   // 1) Check if email and password exist
   if (!email || !password) {
-    return next(AppError('Please provide email and password'), 400);
+    return next(new AppError('Please provide email and password'), 400);
   }
   // 2) Check if user exists && password is correct
   const user = await User.findOne({ email: email }).select('+password');
@@ -68,7 +68,8 @@ exports.login = catchAsync(async (req, res, next) => {
 
 // validate role
 exports.validateRole = catchAsync(async (req, res, next) => {
-  if (req.body.loginAs !== req.user.role) return next(AppError('You do not have permission to perform this action'));
+  if (req.body.loginAs !== req.user.role)
+    return next(new AppError('You do not have permission to perform this action'));
   if (req.user.role === 'customer') {
     // If everything is ok, send token to client (customer token)
     const token = signToken(req.user._id);
