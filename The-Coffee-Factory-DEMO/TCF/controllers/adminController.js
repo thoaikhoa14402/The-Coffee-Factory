@@ -5,6 +5,7 @@ const User = require('../models/userModel');
 const Order = require('../models/orderModel');
 const crypto = require('crypto');
 const sendEmail = require('../utilities/email');
+const productController = require('../controllers/productController');
 
 //------------Tracking Orders---------------
 exports.Status_Handle = catchAsync(async (req, res, next) => {
@@ -45,36 +46,66 @@ exports.History_User = catchAsync(async (req, res, next) => {
 });
 
 //----------Products management----------
+function titleCase(str) {
+  var splitStr = str.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+  }
+  return splitStr.join(' '); 
+}
+
 exports.Create_Product = catchAsync(async (req, res, next) => {
-  let oldProduct = await Product.findOne({ title: req.body.title });
-  oldProduct.content.push(req.body.nameProduct);
-  oldProduct.price.push(req.body.priceProduct);
-  oldProduct.topping.push(req.body.topping);
-  const newProduct = await Product.updateOne(
-    { title: req.body.title },
-    { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping] }
-  );
-  res.status(200).json({ status: 'success' });
+  const checkProduct = await Product.exists({ title: titleCase(req.body.title) });
+  if(!checkProduct){
+    res.status(200).json({ status: `Type '${req.body.title}' is not exist` });
+  }
+  let oldProduct = await Product.findOne({ title: titleCase(req.body.title) });
+  if(oldProduct.content.includes(titleCase(req.body.nameProduct))){
+    res.status(200).json({ status: `Product '${req.body.nameProduct}' has been existed` });
+  }
+  else if(isNaN(req.body.priceProduct)){
+    res.status(200).json({ status: `Product price '${req.body.priceProduct}' is invalid` });
+  }
+  else {
+    oldProduct.content.push(titleCase(req.body.nameProduct));
+    oldProduct.price.push(req.body.priceProduct);
+    oldProduct.topping.push(req.body.topping);
+    oldProduct.img.push(req.body.img);
+    const newProduct = await Product.updateOne(
+      { title: titleCase(req.body.title) },
+      { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping], img: [...oldProduct.img]}
+    );
+    const productData = JSON.stringify(await Product.find({}));
+    res.status(200).json({
+      status: 'Product has been added',
+      data: { productData }
+    });
+  }
 });
 
 exports.Delete_Product = catchAsync(async (req, res, next) => {
-  let oldProduct = await Product.findOne({ title: req.body.title });
-  let deleteIndex = oldProduct.content.indexOf(req.body.nameProduct);
+  let oldProduct = await Product.findOne({ title: titleCase(req.body.title) });
+  let deleteIndex = oldProduct.content.indexOf(titleCase(req.body.nameProduct));
   if (deleteIndex != -1) {
     oldProduct.content.splice(deleteIndex, 1);
     oldProduct.price.splice(deleteIndex, 1);
     oldProduct.topping.splice(deleteIndex, 1);
+    oldProduct.img.splice(deleteIndex, 1)
     const newProduct = await Product.updateOne(
-      { title: req.body.title },
-      { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping] }
+      { title: titleCase(req.body.title) },
+      { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping], img: [...oldProduct.img] }
     );
   }
-  res.status(200).json({ status: 'success' });
+  const productData = JSON.stringify(await Product.find({}));
+  res.status(200).json({
+    status: 'success',
+    data: { productData }
+  });
 });
 
 exports.Update_Product = catchAsync(async (req, res, next) => {
-  let oldProduct = await Product.findOne({ title: req.body.title });
-  let updateIndex = oldProduct.content.indexOf(req.body.nameProduct);
+  let oldProduct = await Product.findOne({ title: titleCase(req.body.title) });
+  let updateIndex = oldProduct.content.indexOf(titleCase(req.body.nameProduct));
   if (updateIndex != -1) {
     oldProduct.content[updateIndex] = req.body.nameUpdate;
     oldProduct.price[updateIndex] = req.body.priceUpdate;
