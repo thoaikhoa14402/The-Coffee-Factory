@@ -9,4 +9,7 @@ router.get('/get-products', productController.sendData);
 //Search product
 router.post('/search-products', productController.searchProduct);
 
+//Filter product
+router.post('/filter-products', productController.filterProduct);
+
 module.exports = router;
