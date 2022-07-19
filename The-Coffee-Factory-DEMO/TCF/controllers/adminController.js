@@ -49,36 +49,39 @@ exports.History_User = catchAsync(async (req, res, next) => {
 function titleCase(str) {
   var splitStr = str.toLowerCase().split(' ');
   for (var i = 0; i < splitStr.length; i++) {
-      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
   }
-  return splitStr.join(' '); 
+  return splitStr.join(' ');
 }
 
 exports.Create_Product = catchAsync(async (req, res, next) => {
   const checkProduct = await Product.exists({ title: titleCase(req.body.title) });
-  if(!checkProduct){
+  if (!checkProduct) {
     res.status(200).json({ status: `Type '${req.body.title}' is not exist` });
   }
   let oldProduct = await Product.findOne({ title: titleCase(req.body.title) });
-  if(oldProduct.content.includes(titleCase(req.body.nameProduct))){
+  if (oldProduct.content.includes(titleCase(req.body.nameProduct))) {
     res.status(200).json({ status: `Product '${req.body.nameProduct}' has been existed` });
-  }
-  else if(isNaN(req.body.priceProduct)){
+  } else if (isNaN(req.body.priceProduct)) {
     res.status(200).json({ status: `Product price '${req.body.priceProduct}' is invalid` });
-  }
-  else {
+  } else {
     oldProduct.content.push(titleCase(req.body.nameProduct));
     oldProduct.price.push(req.body.priceProduct);
     oldProduct.topping.push(req.body.topping);
     oldProduct.img.push(req.body.img);
     const newProduct = await Product.updateOne(
       { title: titleCase(req.body.title) },
-      { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping], img: [...oldProduct.img]}
+      {
+        content: [...oldProduct.content],
+        price: [...oldProduct.price],
+        topping: [...oldProduct.topping],
+        img: [...oldProduct.img],
+      }
     );
     const productData = JSON.stringify(await Product.find({}));
     res.status(200).json({
       status: 'Product has been added',
-      data: { productData }
+      data: { productData },
     });
   }
 });
@@ -90,16 +93,21 @@ exports.Delete_Product = catchAsync(async (req, res, next) => {
     oldProduct.content.splice(deleteIndex, 1);
     oldProduct.price.splice(deleteIndex, 1);
     oldProduct.topping.splice(deleteIndex, 1);
-    oldProduct.img.splice(deleteIndex, 1)
+    oldProduct.img.splice(deleteIndex, 1);
     const newProduct = await Product.updateOne(
       { title: titleCase(req.body.title) },
-      { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping], img: [...oldProduct.img] }
+      {
+        content: [...oldProduct.content],
+        price: [...oldProduct.price],
+        topping: [...oldProduct.topping],
+        img: [...oldProduct.img],
+      }
     );
   }
   const productData = JSON.stringify(await Product.find({}));
   res.status(200).json({
     status: 'success',
-    data: { productData }
+    data: { productData },
   });
 });
 
@@ -152,6 +160,7 @@ exports.createUser = catchAsync(async (req, res, next) => {
     phoneNumber: req.body.phoneNumber,
     gender: req.body.gender,
     status: req.body.status,
+    role: req.body.role,
     password: password,
     passwordConfirm: password,
   });

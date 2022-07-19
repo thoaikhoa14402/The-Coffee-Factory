@@ -18,30 +18,31 @@ mongoose
   })
   .then(() => console.log('DB connection successful!'));
 
-  
-  let products = JSON.parse(fs.readFileSync(`${__dirname}/products.json`, 'utf-8'));
-  const extFile = {
-    apng: 'image/apng',
-    avif: 'image/avif',
-    gif: 'image/gif',
-    jpg: 'image/jpeg',
-    jpeg: 'image/jpeg',
-    jfif: 'image/jpeg',
-    pjpeg: 'image/jpeg',
-    pjg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    webp: 'image/webp',
-    bmp: 'image/bmp',
-    ico: 'image/x-icon',
-    cur: 'image/x-icon',
-    tiff: 'image/tiff',
-    tif: 'image/tiff'
-  }
+let products = JSON.parse(fs.readFileSync(`${__dirname}/products.json`, 'utf-8'));
+const extFile = {
+  apng: 'image/apng',
+  avif: 'image/avif',
+  gif: 'image/gif',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  jfif: 'image/jpeg',
+  pjpeg: 'image/jpeg',
+  pjg: 'image/jpeg',
+  png: 'image/png',
+  svg: 'image/svg+xml',
+  webp: 'image/webp',
+  bmp: 'image/bmp',
+  ico: 'image/x-icon',
+  cur: 'image/x-icon',
+  tiff: 'image/tiff',
+  tif: 'image/tiff',
+};
 
 products = products.map((el) => {
   el.img = el.img.map((pathImg) => {
-    return `data:${extFile[pathImg.substring(pathImg.lastIndexOf('.')).split('.')[1].toLowerCase()]};base64,${fs.readFileSync(pathImg, 'base64')}`;
+    return `data:${
+      extFile[pathImg.substring(pathImg.lastIndexOf('.')).split('.')[1].toLowerCase()]
+    };base64,${fs.readFileSync(pathImg, 'base64')}`;
   });
   return el;
 });
@@ -79,25 +80,24 @@ const deleteUsers = async () => {
 };
 
 // delete shopping carts
-const deleteShoppingCarts = async() => {
+const deleteShoppingCarts = async () => {
   try {
     await Cart.deleteMany();
     console.log('Data of shopping cart successfully deleted!');
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 // delete payment history
-const deleteOrders = async() => {
+const deleteOrders = async () => {
   try {
     await Order.deleteMany();
     console.log('Data of orders successfully deleted!');
   } catch (err) {
     console.log(err);
   }
-}
-
+};
 
 if (process.argv[2] === '--importProducts') {
   importProducts();
