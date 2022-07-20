@@ -54,6 +54,10 @@ function titleCase(str) {
   return splitStr.join(' ');
 }
 
+function numberWithCommas(str) {
+  return str.replace(/\B(?=(\d{3})+(?!\d))/g, ".").concat('đ');
+}
+
 exports.Create_Product = catchAsync(async (req, res, next) => {
   const checkProduct = await Product.exists({ title: titleCase(req.body.title) });
   if (!checkProduct) {
@@ -66,7 +70,7 @@ exports.Create_Product = catchAsync(async (req, res, next) => {
     res.status(200).json({ status: `Product price '${req.body.priceProduct}' is invalid` });
   } else {
     oldProduct.content.push(titleCase(req.body.nameProduct));
-    oldProduct.price.push(req.body.priceProduct);
+    oldProduct.price.push(numberWithCommas(req.body.priceProduct));
     oldProduct.topping.push(req.body.topping);
     oldProduct.img.push(req.body.img);
     const newProduct = await Product.updateOne(
@@ -106,24 +110,47 @@ exports.Delete_Product = catchAsync(async (req, res, next) => {
   }
   const productData = JSON.stringify(await Product.find({}));
   res.status(200).json({
-    status: 'success',
+    status: 'Success',
     data: { productData },
   });
 });
 
 exports.Update_Product = catchAsync(async (req, res, next) => {
-  let oldProduct = await Product.findOne({ title: titleCase(req.body.title) });
-  let updateIndex = oldProduct.content.indexOf(titleCase(req.body.nameProduct));
-  if (updateIndex != -1) {
-    oldProduct.content[updateIndex] = req.body.nameUpdate;
-    oldProduct.price[updateIndex] = req.body.priceUpdate;
-    oldProduct.topping[updateIndex] = [...req.body.toppingUpdate];
+  const checkProduct = await Product.exists({ title: req.body.title });
+  let _stt = ''
+  if (!checkProduct) {
+    res.status(200).json({ status: `Type '${req.body.title}' is not exist` });
+  }
+  let oldProduct = await Product.findOne({ title: req.body.title });
+  var priceUpdate = req.body.priceUpdate
+  if(req.body.priceUpdate[req.body.priceUpdate.length-1]==='đ') {
+    priceUpdate = req.body.priceUpdate.slice(0,-1)
+  }
+  if (oldProduct.content.includes(titleCase(req.body.nameUpdate)) && req.body.nameUpdate !== req.body.nameProduct) {
+    _stt = `Product '${titleCase(req.body.nameUpdate)}' has been existed`
+  }
+  else if (isNaN(priceUpdate)) {
+    _stt = `Product price '${req.body.priceUpdate}' is invalid`
+  } 
+  else{
+    let updateIndex = oldProduct.content.indexOf(req.body.nameProduct);
+    if (updateIndex != -1) {
+      oldProduct.content[updateIndex] = req.body.nameUpdate;
+      oldProduct.price[updateIndex] = numberWithCommas(priceUpdate);
+      oldProduct.topping[updateIndex] = [...req.body.toppingUpdate];
+      oldProduct.img[updateIndex] = req.body.imgUpdate;
+    }
     const newProduct = await Product.updateOne(
       { title: req.body.title },
-      { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping] }
+      { content: [...oldProduct.content], price: [...oldProduct.price], topping: [...oldProduct.topping], img: [...oldProduct.img] }
     );
+    _stt = 'Success'
   }
-  res.status(200).json({ status: 'success' });
+  const productData = JSON.stringify(await Product.find({}));
+  res.status(200).json({
+    status: _stt,
+    data: { productData },
+  });
 });
 
 //-----------Users management------------

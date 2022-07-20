@@ -43,17 +43,23 @@ const searchProductByPrice = async(productData, req, res, next) =>{
     }
   }
   return productData
-}
+} 
 
 exports.searchProduct = catchAsync(async (req, res, next) => {
   let productData = await Product.find({});
   productData = await searchProductByName(productData, req,res,next)
-  res.status(200).json(productData);
+  res.status(200).json({
+    status: 'success',
+    data: { productData }
+  });
 });
   
 exports.filterProduct = catchAsync ( async (req,res,next)=>{  
   let productData = await Product.find({});
   if(req.body.searchName !== '') productData = await searchProductByName(productData,req,res,next)
   productData = await searchProductByPrice(productData,req,res,next)
-  res.status(200).json(productData);
+  res.status(200).json({
+    status: 'success',
+    data: { productData }
+  });
 })
