@@ -1,0 +1,49 @@
+.Sidebar {
+  width: 210px;
+  background-color: white;
+  padding: 40px 50px 40px 25px;
+  box-shadow: 7px 0px 30px rgba(0, 0, 0, 0.2);
+  height: 665px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select:none;
+}
+
+.Logo {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  height: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.Logo > img {
+  height: 100%;
+}
+
+.Feature {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
+  color: black;
+  cursor: pointer;
+}
+
+.choose {
+  background-color: #339af0;
+  color: white;
+}
+
+.feature > svg {
+  width: 23px;
+  height: 23px;
+}
