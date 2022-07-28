@@ -10,23 +10,23 @@ import {
 import Store from './Component/Store/Store';
 import Login_Register from './Component/Login_Register/Login_Register';
 import IntroducePage from './Component/IntroducePage/IntroducePage';
-// const root = ReactDOM.createRoot(
-//   document.getElementById("root")
-// );
+import Register from './Component/Login_Register/Register/Register';
+import Login from './Component/Login_Register/Login/Login';
+import ForgetPassword from './Component/Login_Register/ForgetPassword/ForgetPassword';
 
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/home" element={<Home/>}/>
             <Route path="/home/introducePage" element={<IntroducePage />} />
-          <Route path="/register" element={<Login_Register/>}/>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/forgotpassword" element={<ForgetPassword/>}/>
           <Route path="/store" element={<Store/>}/>
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }

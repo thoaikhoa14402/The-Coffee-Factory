@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../Home/Header/Navbar/Navbar';
 import "./IntroducePage.css"
 import Footer from '../Footer/Footer';
+import Navbar from '../Navbar/Navbar';
 
 const IntroducePage = () => {
     return (
         <div className='container'>
             <div>
-                <Navbar />
+                <Navbar/>
             </div>
             <div className='img__store'>
                 <div className='backgroud-header'>

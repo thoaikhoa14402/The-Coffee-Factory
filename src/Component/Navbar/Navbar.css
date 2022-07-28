@@ -10,6 +10,7 @@
     justify-content: space-around;
     position: fixed;
     z-index: 10000;
+    padding-left: 50px;
 }
 
 .container-details {
@@ -55,16 +56,31 @@
     cursor: pointer;
 }
 
+.navbar-details {
+    display: flex;
+    width: 45%;
+}
+
 .search-icons {
     display: flex;
     justify-content: space-evenly;
     margin-left: 1rem;
-    width: 400px;
+    /* width: 300px; */
 
 }
 
 .search-form {
     width: 240px;
+    height: 25px;
+    border: 2px solid black;
+    margin: auto 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: start;
+}
+
+.search-form-login {
+    width: 300px;
     height: 25px;
     border: 2px solid black;
     margin: auto 0;
@@ -82,7 +98,7 @@
 }
 
 
-.input-search input{
+.input-search input {
     font-size: 10px;
     outline: none;
     font-size: 14px;
@@ -91,34 +107,64 @@
     width: 205px;
 }
 
-.shop-icons {
-    display: flex;
-    margin: auto 0;
-    justify-content: space-evenly;
-    width: 100px;
+.icon-shopping {
+    margin: auto 20px;
 }
 
-.icon-shopping svg{
+.icon-shopping svg {
     width: 18px;
     height: 20px;
 }
 
-
-
-.icon-list {
-    width: 30px;
-    height: 16px;
-}
-
-.icon-list svg {
-    width: 25px;
-    height: 16px;
-}
-
-.icon-list, 
-.icon-shopping {
+.icon-shopping:hover,
+.login-btn:hover,
+.signup-btn:hover {
     cursor: pointer;
 }
+
+.login-btn,
+.signup-btn {
+    width: 120px;
+    height: 25px;
+    border-radius: 20px;
+    margin: auto 10px;
+    background-color: #FFFFFF;
+    display: block;
+    border: #000000 solid 2px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 25px;
+    text-decoration: none;
+    color: #000000;
+}
+.user-login {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: #000000 solid 2px;
+    margin: auto 20px;
+}
+
+.user-login img{
+    width: 30px;
+    height: 30px;
+}
+
+.logout-btn {
+    margin: auto 20px;
+}
+
+.logout-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.logout-btn:hover svg {
+    color: rgba(172, 1, 1, 1);
+}
+
 
 .icon-shopping:hover svg path,
 .icon-list:hover svg path {

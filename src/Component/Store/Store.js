@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../Home/Header/Navbar/Navbar';
 import "./Store.css"
+import Navbar from '../Navbar/Navbar';
 
 
 const Store = () => {
     return (
         <div className='container-main'>
-            <Navbar />
+            <Navbar/>
             <img className='img-bg-store' src='../../imgStore/bg_store.png' />
             <div className='container-content'>
                 <div className='sidebar'>

@@ -1,5 +1,5 @@
 {
-  "name": "my-project",
+  "name": "admin_page",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +11,9 @@
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
