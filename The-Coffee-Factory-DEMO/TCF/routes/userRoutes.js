@@ -25,4 +25,7 @@ router.patch('/updateMyPassword', authController.protect, authController.updateP
 // Update current user's data
 router.patch('/updateMe', authController.protect, userController.updateMe);
 
+// Get user information
+router.get('/userProfile', authController.protect, userController.userProfile);
+
 module.exports = router;

@@ -12,7 +12,7 @@ router.post('/update-status', authController.protectForAdmin, adminController.St
 router.get('/history-ad', authController.protectForAdmin, adminController.History_Admin);
 
 //Order History for User
-router.post('/history-user', authController.protectForAdmin, adminController.History_User);
+router.post('/history-user', authController.protect, adminController.History_User);
 
 //----------Products-------------
 
