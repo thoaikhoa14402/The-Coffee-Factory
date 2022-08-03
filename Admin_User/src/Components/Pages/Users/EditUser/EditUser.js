@@ -4,7 +4,7 @@ import axios from 'axios'
 import Cookie from 'universal-cookie'
 import io from 'socket.io-client'
 import back from "../../../../Images/double-left.png"
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const cookie = new Cookie()
 const socket = io.connect(process.env.REACT_APP_IPADDRESS)
@@ -16,10 +16,10 @@ export default function AddUser() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [role, setRole] = useState();
-
+    const [setSuc, setSaveEditSuccess] = useState(false)
     const [dataEdit, setDataEdit] = useState('')
 
-
+    const navigate = useNavigate()
 
     const sendDataUpdate = () => {
         const headers = {
@@ -38,6 +38,11 @@ export default function AddUser() {
             console.log(name)
             console.log(gender)
             console.log(res.data)
+            setSaveEditSuccess(true)
+            setTimeout(() => {
+                setSaveEditSuccess(false)
+            }, 3000);
+
         }).catch(error => {
             console.log(error)
         })
@@ -55,6 +60,7 @@ export default function AddUser() {
             setStatus(res.data.data.status)
             setRole(res.data.data.role)
             console.log(res.data.data)
+
         }).catch(error => {
             console.log(error)
         })
@@ -63,8 +69,19 @@ export default function AddUser() {
 
     return (
         <div className='AddUser'>
-            <div className='back-allUser'>
-                <img className="btn-back" src={back} alt='' />
+            <div className='back-allUser' onClick={() => navigate('/users')}>
+                <svg className="btn-back" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_1802_6518)">
+                        <path d="M9.11553 1.75272e-06L10.8843 1.83588L3.01865 10L10.8843 18.1641L9.11553 20L0.365526 10.9179C-0.121974 10.4119 -0.121974 9.59131 0.365526 9.08206L9.11553 1.75272e-06Z" fill="black" />
+                        <path d="M1.25 11.2974L20 11.2974L20 8.70255L1.25 8.70255L1.25 11.2974Z" fill="black" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_1802_6518">
+                            <rect width="20" height="20" fill="white" transform="translate(20 20) rotate(-180)" />
+                        </clipPath>
+                    </defs>
+                </svg>
+
                 <p className='btn-name'>All User</p>
             </div>
 
@@ -124,9 +141,10 @@ export default function AddUser() {
                 </div>
             </div>
 
-            <div className='save-user-btn' onClick={() => { sendDataUpdate() }}>
-                <p className='save-user'>Save</p>
-            </div>
+            {!setSuc && <div className='save-user-btn' onClick={() => { sendDataUpdate() }}>
+                <p className='save-user'>save</p></div>}
+            {setSuc && <div className='save-user-btn save-user-btn-bg' onClick={() => { sendDataUpdate() }}>
+                <p className='save-user'>save successfully</p></div>}
 
         </div>
     )

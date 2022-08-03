@@ -18,6 +18,7 @@
   width: 220px;
   /* margin-bottom: 100px; */
   user-select: none;
+  -webkit-user-select:none;
 }
 
 .logo > img {
@@ -73,6 +74,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   user-select: none;
+  -webkit-user-select:none;
 }
 
 .loginButton:hover {
@@ -90,6 +92,7 @@
   left: 61%;
   cursor: pointer;
   user-select: none;
+  -webkit-user-select: none;
 }
 
 .icon {
