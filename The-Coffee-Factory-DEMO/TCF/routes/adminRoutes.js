@@ -32,6 +32,9 @@ router.get('/get-all-users', authController.protectForAdmin, adminController.get
 // get user by email from DB
 router.get('/get-user', authController.protectForAdmin, adminController.getUser);
 
+// get user by id from DB
+router.get('/get-user-by-id/:id', authController.protectForAdmin, adminController.getUserById);
+
 // create new user
 router.post('/create-user', authController.protectForAdmin, adminController.createUser);
 
