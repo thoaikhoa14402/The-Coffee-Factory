@@ -1,0 +1,217 @@
+.Users {
+  width: 100%;
+  padding: 30px 70px;
+}
+
+.UserTitle {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.UserInformation {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.ui {
+  height: 85px;
+  width: 250px;
+  background-color: aqua;
+  box-sizing: border-box;
+  border-radius: 10px;
+  text-transform: uppercase;
+  padding: 0 30px;
+  position: relative;
+  color: white;
+  font-weight: 600;
+}
+
+.add-user {
+  position: absolute;
+  width: 100px;
+  height: 26px;
+  background-color: #fd7e14;
+  border-radius: 4px;
+  display: flex;
+  margin-top: 20px;
+  color: #fff;
+  cursor: pointer;
+  right: 90px;
+  top: 260px;
+}
+
+.new-user {
+  margin: auto -5px auto 5px;
+  width: 100px;
+  font-size: 14px;
+}
+
+.au-icon {
+  margin: auto 5px 0;
+}
+
+.ui-1 {
+  background-color: #38d9a9;
+  /* background: linear-gradient(180deg, #fa3802 0%, #ca0a0a 46.88%, #b50303 100%); */
+}
+
+.ui-2 {
+  /* background-color: #22b411; */
+  /* background: linear-gradient(180deg, #02fa72 0%, #11c650 46.88%, #06ab19 100%); */
+  background-color: #f03e3e;
+}
+
+.ui-3 {
+  /* background-color: #0da1bb; */
+  /* background: linear-gradient(180deg, #026dfa 0%, #144cbc 46.88%, #043eb1 100%); */
+  background-color: #339af0;
+}
+
+.search-form {
+  width: 270px;
+  height: 30px;
+  border: 2px solid rgb(185, 184, 184);
+  margin: auto 0;
+  border-radius: 20px;
+  display: flex;
+  justify-content: start;
+  position: absolute;
+  top: 220px;
+  right: 80px;
+  outline: none;
+}
+
+.search-form > img {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  width: 25px;
+  height: 25px;
+}
+
+.input-search {
+  position: absolute;
+  font-size: 10px;
+  outline: none;
+  font-size: 14px;
+  border: none;
+  margin-left: 5px;
+  border: none;
+  outline-width: 0;
+  left: 32px;
+  top: 6px;
+  font-size: 16px;
+  width: 222px;
+}
+
+.input-search input:focus,
+.input-search select:focus {
+  outline: none;
+  border: none;
+}
+
+.uiIcon {
+  position: absolute;
+  top: 27%;
+  right: 10%;
+}
+
+.uiIcon > img {
+  height: 40px;
+}
+
+.recentUsers {
+  margin-top: 80px;
+  width: 100%;
+  height: 456px;
+  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.recentUsersTitle {
+  display: flex;
+  align-items: center;
+  gap: 84%;
+  padding: 0 15px;
+  height: 40px;
+  border-bottom: solid 2px rgb(0, 0, 0, 0.1);
+}
+
+.recentUsersTitle > p {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.recentUsersTitle > button {
+  border: none;
+  background-color: #fd7e14;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.recentUserName {
+  height: 40px;
+  /* border-bottom: solid 2px rgb(0, 0, 0, 0.1); */
+  position: relative;
+  font-weight: 500;
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+.id {
+  position: absolute;
+  top: -15%;
+  left: 9%;
+}
+
+.name-user {
+  position: absolute;
+  top: -15%;
+  left: 32%;
+}
+
+.email {
+  position: absolute;
+  top: -15%;
+  left: 54%;
+}
+
+.gender {
+  position: absolute;
+  top: -15%;
+  left: 69.5%;
+}
+
+.status {
+  position: absolute;
+  top: -15%;
+  left: 80.5%;
+}
+
+.actionC {
+  position: absolute;
+  top: -15%;
+  left: 91%;
+}
+
+.recentUsers > .mainUser {
+  height: 374px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.mainUser::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mainUser::-webkit-scrollbar-thumb {
+  background-color: #bfbfbf;
+  border-radius: 20px;
+}
+
+.mainUser::-webkit-scrollbar-track {
+  background-color: white;
+}
