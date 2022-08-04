@@ -1,0 +1,154 @@
+.container-main img {
+  width: 100%;
+  height: 100%;
+  margin-top: 60px;
+}
+
+.img-bg-store {
+  margin-top: 60px;
+}
+
+.container-content {
+  display: flex;
+  text-align: start;
+}
+
+.sidebar {
+  width: 365px;
+  height: 430px;
+  position: fixed;
+  margin-left: 90px;
+  /* box-shadow: 0px 5px 5px rgba(88, 86, 86, 0.214); */
+}
+
+.sidebar-conrtent {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+  border-bottom: 2px none;
+  padding-bottom: 5px;
+  margin: 20px 0 5px 100px;
+}
+
+.dictrict-container .dictrict-name {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  color: #000000;
+  text-align: start;
+  margin: 20px 0 5px 100px;
+}
+
+.infor-content {
+  display: grid;
+  display: -ms-grid;
+  -ms-grid-rows: 550px 550px 550px 550px 550px 550px;
+  grid-template-rows: 500px 500px 500px 500px 500px 500px;
+  -ms-grid-row: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  width: 69%;
+  height: 100%;
+  margin-left: 40px;
+  text-align: start;
+  margin-top: 60px;
+  transform: translateX(40%);
+}
+
+.infor-address img {
+  width: 460px;
+  height: 300px;
+}
+
+.content-address {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-address .name-address {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  margin-right: 118px;
+}
+
+.button-map {
+  text-decoration: none;
+  width: 79%;
+  height: 28px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  border: 3px solid #ff0000;
+  border-radius: 20px;
+  justify-content: center;
+  background-color: #ff0000;
+  margin-bottom: 10px;
+  /* border-bottom: 2px solid; */
+}
+
+.button-map:hover {
+  background-color: #fff;
+  color: #ff0000;
+}
+
+.address-detail {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  border-top: 2px solid;
+  padding-top: 15px;
+  height: 30px;
+  margin-bottom: 0;
+  width: 80%;
+}
+
+.time-open {
+  display: flex;
+  height: 30px;
+}
+
+.time-open svg {
+  line-height: 24px;
+  width: 25px;
+  height: 25px;
+  margin-top: auto 0;
+  margin: auto 0;
+}
+
+.time-detail {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  margin-left: 20px;
+}
+
+.infor-address .logoTCF {
+  width: 238.03px;
+  height: 60px;
+  margin: 120px 111px;
+}
