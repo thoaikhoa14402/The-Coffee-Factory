@@ -1,0 +1,252 @@
+.footer_container {
+  min-width: 100%;
+  height: 400px;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  margin-top: 60px;
+  justify-content: space-evenly;
+}
+
+.info_company {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 219.28px;
+}
+
+.logo_footer {
+  width: 190px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.logo_footer,
+.time_open_close,
+.text_phone,
+.connect_web,
+.connect_mail,
+.address {
+  display: flex;
+  margin-left: 30px;
+}
+
+.info_title {
+  width: 95px;
+  height: 20px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #ffffff;
+  margin: auto 30px;
+  padding-top: 50px;
+}
+
+.time_open_close {
+  width: 500px;
+  height: 100%;
+}
+
+.icon_clock svg,
+.icon_text svg,
+.icon_web svg,
+.icon_mail svg,
+.icon_address svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.icon_clock,
+.icon_text,
+.icon_web,
+.icon_mail,
+.icon_address {
+  margin-right: 20px;
+  padding: auto 0;
+  height: 18px;
+  line-height: 50px;
+}
+
+.icon_clock {
+  line-height: 70px;
+}
+
+.info_time {
+  display: flex;
+  flex-direction: column;
+}
+
+.info_text p,
+.info_web p,
+.info_mail p,
+.info_address p {
+  height: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #fff;
+  justify-content: center;
+  margin: 10px 0 0;
+  float: left;
+  padding: 3px 0;
+}
+
+.info_time p {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #fff;
+  justify-content: center;
+  margin: 10px 0 0;
+  float: left;
+}
+
+.quick_link,
+.provision {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 100%;
+}
+
+.title_link,
+.title_provision,
+.title_subscribe {
+  margin-top: 50px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  line-height: 20px;
+  text-align: left;
+}
+
+.detail_link p,
+.detail_rules p,
+.description_sub p {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+  margin-top: 1.8rem;
+  color: #ffffff;
+  text-align: left;
+}
+
+.detail_rules {
+  text-align: left;
+}
+
+.QR {
+  margin-top: 30px;
+  width: 40%;
+}
+
+.subscribe {
+  width: 270px;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  text-align: left;
+}
+
+.subscribe .description_sub p {
+  width: 100%;
+  height: 36px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: justify;
+  justify-content: center;
+}
+
+.input_info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 45px;
+}
+
+.input_info input::placeholder,
+.input_info button {
+  font-family: "Montserrat", sans-serif;
+}
+
+.input_info button {
+  color: #fff;
+  font-weight: 600;
+}
+
+.input_info button:hover {
+  cursor: pointer;
+  color: #ff0000;
+}
+
+.input_button {
+  margin: 0 0 1rem 0;
+  width: 240px;
+  height: 25px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+.button_sub {
+  background-color: #ff0000;
+  border-radius: 20px;
+  width: 256px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+.button_sub:hover {
+  background-color: #fff;
+  border: 3px solid #ff0000;
+}
+
+.copyright p {
+  padding: .5rem;
+  width: 100%;
+  height: 26px;
+  font-size: 10px;
+  background-color: #000000;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+  border-top: 1px solid #fff;
+  margin: auto 0;
+}
+
+.detail_link p:hover {
+  color: #f71515ca;
+  cursor: pointer;
+}
+
+.detail_rules p:hover {
+  color: #f71515ca;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}

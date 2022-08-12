@@ -1,0 +1,167 @@
+.containers {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.favorite-product-container {
+    min-width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.favorite-product-card1::before
+{
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    background-color: white;
+    opacity: 0;
+    transition: 0.3s;   
+}
+
+.favorite-product-card1:hover::before
+{
+    opacity: 1;
+    z-index: 1;
+}
+
+.favorite-product-card2::before
+{
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    background-color: white;
+    opacity: 0;
+    transition: 0.3s;   
+}
+
+.favorite-product-card2:hover::before
+{
+    opacity: 1;
+    z-index: 1;
+}
+
+.favorite-product-card3::before
+{
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    background-color: white;
+    opacity: 0;
+    transition: 0.3s;   
+}
+
+.favorite-product-card3:hover::before
+{
+    opacity: 1;
+    z-index: 1;
+}
+
+.favorite-product-card1,
+.favorite-product-card2,
+.favorite-product-card3 {
+    margin: 0 15px;
+    position: relative;
+    overflow: hidden;
+    width: 345px;
+}
+
+.img-favorite-product1 {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transition: 0.3s;    
+}
+
+.img-favorite-product2 {
+    position: absolute;
+    top: -5px;
+    left: 5px;
+}
+
+.img-favorite-product3 {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.container-hover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    transition: 0.4s;
+    opacity: 0;
+    z-index: 2;
+}
+
+.product-hover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    transition: 0.4s;
+    opacity: 0;
+}
+
+.product-hover2,
+.product-hover3 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.container-hover:hover {
+    opacity: 1;
+}
+
+.product-hover:hover {
+    opacity: 1;
+    transform: scale(1.4) translateY(30px);
+}
+
+.container-hover .bg-hover {
+    position: absolute;
+    left: 2px;
+    opacity: .6;
+}
+
+.container-hover .bg-hover2 {
+    position: absolute;
+    top: -4px;
+    left: 4px;
+    opacity: .6;
+}
+
+.container-hover .bg-hover3 {
+    position: absolute;
+    top: 0px;
+    left: 8px;
+    opacity: .6;
+}
+
+.product-hover2:hover{
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+.product-hover3:hover{
+    opacity: 1;
+    transform: scale(1.4) translateX(-5px) translateY(-3px);
+}
+
