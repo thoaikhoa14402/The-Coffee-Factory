@@ -1,0 +1,73 @@
+.ItemUsers {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+    border-bottom: solid 2px rgb(0, 0, 0, 0.1);
+    font-weight: 400;
+}
+.ItemUsers>.idUser {
+    position: absolute;
+    top: 8%;
+    left: 5px;
+    /* background-color: aqua; */
+    width: 20%;
+    text-align: center;
+}
+
+
+.ItemUsers>.nameUser {
+    position: absolute;
+    top: 8%;
+    left: 240px;
+    /* background-color: red; */
+    width: 25%;
+    text-align: center;
+}
+
+.ItemUsers>.email-user {
+    position: absolute;
+    top: 8%;
+    left: 500px;
+    /* background-color: red; */
+    width: 25%;
+    text-align: center;
+}
+
+.ItemUsers>.genderUser {
+    position: absolute;
+    top: 8%;
+    left: 780px;
+    /* background-color: green; */
+    width: 7%;
+    height: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.ItemUsers>.status-user {
+    position: absolute;
+    top: 40%;
+    left: 895px;
+    width: 7%;
+    height: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.ItemUsers>.action {
+    position: absolute;
+    top: 30%;
+    left: 1020px;
+    /* background-color: pink; */
+    width: 6%;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ItemUsers>.action>svg {
+    height: 23px;
+    cursor: pointer;
+}

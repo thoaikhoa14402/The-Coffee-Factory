@@ -1,0 +1,41 @@
+.SideBar {
+  width: 220px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* background-color: aqua; */
+  user-select: none;
+  margin-top: -5px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.menu > svg {
+  /* margin-bottom: -25px; */
+}
+
+.titlee {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.title-min {
+  width: 100px;
+  margin-left: 34px;
+  margin-top: -5px;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.choose {
+  color: red;
+  fill: red;
+}

@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+
+.FrameTra {
+  background-color: aliceblue;
+  font-family: "Montserrat", sans-serif;
+
+  width: 710px;
+  height: 460px;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+  background-color: aliceblue;
+  position: relative;
+  user-select: none;
+}
+
+.image {
+  width: 300px;
+  top: 40px;
+  left: 20px;
+  position: absolute;
+}
+
+.image > img {
+  width: 100%;
+}
+
+.information {
+  width: 308px;
+  top: 30px;
+  left: 360px;
+  position: absolute;
+}
+
+.section1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.section2 {
+  display: flex;
+  align-items: center;
+}
+
+.price {
+  margin-right: 165px;
+}
+
+.amount {
+  margin: 0 5px;
+}
+
+.section3 {
+  width: 310px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  background-color: black;
+  text-transform: uppercase;
+  color: white;
+}
+
+.title > p {
+  margin-left: 25px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.topping {
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+  gap: 50px;
+  height: 48px;
+}
+
+.toppingAdd {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  height: 48px;
+  border: 1px solid #ff0000;
+}
+
+.infor > p {
+  font-size: 14px;
+}
+.infor > .name {
+  margin-bottom: -13px;
+}
+.infor {
+  margin-left: 22px;
+}
+.add1 {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin-left: 60px;
+  gap: 5px;
+}
+
+.add2 {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin-left: 80px;
+  gap: 5px;
+}
+
+.note {
+  height: 112px;
+}
+
+.mainNote {
+  border: none;
+  resize: none;
+  font-size: inherit;
+  color: black;
+  padding: 10px 25px;
+  width: 92%;
+  height: 50%;
+}
+
+.mainNote:focus {
+  outline: none;
+}
+
+.pay {
+  width: 100%;
+  border: none;
+  background-color: #ff0000;
+  color: aliceblue;
+  border-radius: 22px;
+  margin-top: 25px;
+  padding: 10px;
+  font-size: 12px;
+  cursor: pointer;
+}

@@ -1,0 +1,218 @@
+.Account {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.background {
+  width: 100%;
+  /* opacity: 0.5; */
+  /* background-color: black; */
+}
+
+.information {
+  box-sizing: border-box;
+  background-color: white;
+  width: 92%;
+  height: 320px;
+  position: absolute;
+  top: 32%;
+  left: 4%;
+  /* background-color: aqua; */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+  padding: 100px 100px 30px 110px;
+}
+.form1 {
+  /* background-color: yellow; */
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  font-size: 15px;
+  column-gap: 140px;
+}
+.form-title {
+  font-weight: 600;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.inputt {
+  /* background-color: yellow; */
+  width: 180px;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+}
+.star {
+  margin-bottom: -13px;
+}
+
+.inputt:focus {
+  outline: none;
+}
+
+.inputt::placeholder {
+  font-family: "Montserrat", sans-serif;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.form2 {
+  /* background-color: yellow; */
+  display: flex;
+  gap: 120px;
+  /* padding-top: 20px; */
+  position: relative;
+}
+
+.form2-main {
+  border-left: 2px solid #bfbfbf;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  column-gap: 40px;
+  /* background-color: yellow; */
+  position: absolute;
+  left: 300px;
+  padding-left: 50px;
+}
+
+.input2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.form-title2 {
+  /* width: 300px; */
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form-titlee {
+  position: absolute;
+  /* top: px; */
+  left: 50px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  z-index: 7;
+  border-radius: 50%;
+  border: 12px solid white;
+  overflow: hidden;
+  position: absolute;
+  top: 22%;
+  left: 44%;
+  background-color: black;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.midle {
+  margin-bottom: 5px;
+}
+
+.shot {
+  position: absolute;
+  top: 36%;
+  left: 53%;
+  background-color: white;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  z-index: 8;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.save {
+  font-family: inherit;
+  background-color: red;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 20px;
+  position: absolute;
+  top: 110%;
+  left: 32%;
+  color: white;
+  width: 380px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 4px solid red;
+}
+
+.Ssuc {
+  background-color: #00b512;
+  border: 4px solid #00b512;
+}
+
+.save:hover,
+.saveP:hover {
+  color: red;
+  background-color: white;
+}
+
+.Ssuc:hover {
+  background-color: #00b512;
+  border: 4px solid #00b512;
+  color: white;
+}
+.saveP {
+  font-family: inherit;
+  background-color: red;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 20px;
+  position: absolute;
+  /* top: 60%; */
+  margin-top: 250px;
+  left: 26%;
+  color: white;
+  width: 380px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 4px solid red;
+}
+
+.wrongCurrentPassword {
+  position: absolute;
+  left: 69%;
+  top: 30px;
+  color: red;
+  font-size: 12px;
+  font-style: italic;
+}
+.wrongNewPassword {
+  left: 69%;
+  top: 88px;
+  color: red;
+  position: absolute;
+  font-size: 12px;
+  font-style: italic;
+}
+.wrongConfirmPassword {
+  left: 69%;
+  top: 150px;
+  color: red;
+  position: absolute;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.resetPasswordSuccess {
+  position: absolute;
+  z-index: 11;
+  top: 300px;
+  left: 435px;
+  /* background-color: aqua; */
+  text-align: center;
+}

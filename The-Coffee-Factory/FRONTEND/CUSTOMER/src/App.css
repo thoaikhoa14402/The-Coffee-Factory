@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap");
+
+.store {
+  overflow-x: hidden;
+}
+
+.LOGIN_REGISTER {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  padding-top: 100px;
+  background-image: url(./Image/background_login.jpg);
+  background-size: cover;
+  font-family: "Montserrat", sans-serif;
+}
