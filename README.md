@@ -1,5 +1,3 @@
 # The-Coffee-Factory
 The Coffee Factory Website
-
-- Authentication handle
-- Building database for user
+The Factory Coffee website helps customers order drinks and assists with administrative tasks to manage income and orders. The project is being done by a group of four.
